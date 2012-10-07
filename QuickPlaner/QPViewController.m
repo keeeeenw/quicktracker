@@ -18,6 +18,9 @@
 #define SAVE_DATE @"save_date"
 #define SAVE_AMOUNT @"save_amount"
 
+#define SAVE @"Saving"
+#define SPEND @"Spending"
+
 @interface QPViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField;
@@ -53,69 +56,31 @@
 
 - (void) processPurchase:(NSString *)purchaseAnswer
               fromButton:(UIButton *)sender{
-    [self startSpinner:@"Updating Purchase"];
+    [self startSpinner:@"Updating Spending"];
     
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    double spending =  [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
+    spending -= [purchaseAnswer doubleValue];
     
-    //Create purchase_id by using current time stamp
-    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSString *purchase_id = [NSString stringWithFormat:@"%f", timeStamp];
+    [[NSUserDefaults standardUserDefaults] setDouble:spending forKey:SPEND];
     
-    //Create purchaseInfo to be recieved spendWithPurchaseInfo:inManangedObjectContext
-    NSDictionary *purchaseInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  purchase_id,PURCHASE_ID,
-                                   date,PURCHASE_DATE,
-                                  [NSNumber numberWithDouble:[purchaseAnswer doubleValue]], PURCHASE_AMOUNT,
-                                  nil];
-    
-    //Storing Information to Database
-//    [DocumentHelper openDocument:@"Spending" usingBlock:^(UIManagedDocument *document){
-//        [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
-//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-//            if (success) {
-//                NSLog(@"New Data Saving Succeed");
-//                double currentValue = [self moneyValueInMoneyRemainedLabel] - [purchaseAnswer doubleValue];
-//                self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", currentValue];
-//                if (sender) {
-//                    sender.hidden = NO;
-//                }
-//                [self stopSpinner];
-//            }
-//        }];
-//    }];
+    double total = [self moneyValueInMoneyRemainedLabel] - [purchaseAnswer doubleValue];
+    self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+    [self stopSpinner];
+    sender.hidden = NO;
 }
 
 - (void) processSaving:(NSString *) saveAmount
             fromButton:(UIButton *)sender {
-    [self startSpinner:@"Adding Money"];
-
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    [self startSpinner:@"Updating Saving"];
+    double saving =  [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue];
+    saving += [saveAmount doubleValue];
     
-    //Create save_id by using current time stamp
-    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSString *save_id = [NSString stringWithFormat:@"%f", timeStamp];
+    [[NSUserDefaults standardUserDefaults] setDouble:saving forKey:SAVE];
     
-    //Create saveInfo to be recieved savedWithPurchaseInfo:inManangedObjectContext
-    NSDictionary *saveInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  save_id,SAVE_ID,
-                                  date,SAVE_DATE,
-                                  [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
-                                  nil];
-    
-//    [DocumentHelper openDocument:@"Saving" usingBlock:^(UIManagedDocument *document){
-//        [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
-//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-//            if (success) {
-//                NSLog(@"New Data Saving Succeed");
-//                double currentValue = [self moneyValueInMoneyRemainedLabel] + [saveAmount doubleValue];
-//                self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", currentValue];
-//                if (sender) {
-//                    sender.hidden = NO;
-//                }
-//                [self stopSpinner];
-//            }
-//        }];
-//    }];
+    double total = [self moneyValueInMoneyRemainedLabel] + [saveAmount doubleValue];
+    self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+    [self stopSpinner];
+    sender.hidden = NO;
 }
 
 - (double) moneyValueInMoneyRemainedLabel{
@@ -135,24 +100,30 @@
     //This will be changed to 1 via View Animation
     self.moneyRemainedLabel.alpha = 0;
     
-//    [DocumentHelper openDocument:@"Saving" usingBlock:^(UIManagedDocument *document){
-//
-//        double totalSaving = [[Saving totalSavingInManagedObjectContext:document.managedObjectContext] doubleValue];
-//        NSLog(@"Total Saving %f",totalSaving);
-//        
-//        [DocumentHelper openDocument:@"Spending" usingBlock:^(UIManagedDocument *document){
-//            double totalSpending = [[Spending totalSpendingInManagedObjectContext:document.managedObjectContext] doubleValue];
-//            double currentValue = totalSaving - totalSpending;
-//            [UIView animateWithDuration:1 animations:^{
-//                self.moneyRemainedLabel.alpha = 1;
-//                            self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", currentValue];
-//            }];
-//            NSLog(@"Total Spending %f",totalSpending);
-//            NSLog(@"Current Value %f", currentValue);
-//            
-//        }];
-//        
-//    }];
+    double saving;
+    double spending;
+    
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue]) {
+        saving = 0;
+        [[NSUserDefaults standardUserDefaults] setDouble:0.0 forKey:SAVE];
+    } else {
+        saving = [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue];
+    }
+    
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue]) {
+        spending = 0;
+        [[NSUserDefaults standardUserDefaults] setDouble:0.0 forKey:SPEND];
+    } else {
+        spending = [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
+    }
+    
+    double total = saving - spending;
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.moneyRemainedLabel.alpha = 1;
+        self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+    }];
+    
 }
 
 - (void)updateQuickAddButtonsUsingSign:(NSString *)sign{
