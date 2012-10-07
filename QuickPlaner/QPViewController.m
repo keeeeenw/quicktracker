@@ -20,6 +20,7 @@
 
 #define SAVE @"Saving"
 #define SPEND @"Spending"
+#define MODE @"ApplicationMode"
 
 @interface QPViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
@@ -191,7 +192,13 @@
         self.appMode = true; //Saving
         [self updateQuickAddButtonsUsingSign:@"+"];
     }
+    [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
     
+}
+- (IBAction)resetPressed:(UIButton *)sender {
+    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
+    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
+    [self updateMoneyRemainedLabel];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -230,6 +237,18 @@
     
     //Setting up self.moneyRemainedLabel
     [self updateMoneyRemainedLabel];
+    
+    //Updating the digit buttons according to the mode
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:MODE]){
+        [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
+    } else {
+        self.appMode = [[NSUserDefaults standardUserDefaults] objectForKey:MODE];
+    }
+    if (self.appMode) { //This means app is using Saving Mode
+        [self updateQuickAddButtonsUsingSign:@"+"];
+    } else { //This means app is using Spending Mode
+        [self updateQuickAddButtonsUsingSign:@"-"];
+    }
     
     //Setting up title
     self.navigationItem.title = self.title;

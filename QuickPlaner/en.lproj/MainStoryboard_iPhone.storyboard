@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="auB-Y5-dMS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="auB-Y5-dMS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller - My Piggy Bank-->
+        <!--View Controller - My Quick Planner-->
         <scene sceneID="8wv-P5-Wf9">
             <objects>
-                <viewController title="My Piggy Bank" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
+                <viewController title="My Quick Planner" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxz-qu-c4d">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CNV000013 (1).jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-TA-vvY"/>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md6-Tw-kBi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CNV000013 (1).jpg" id="4ca-TA-vvY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                            </imageView>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pQn-3e-x02">
+                                <rect key="frame" x="110" y="263" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="aXo-I9-b5y"/>
-                                    <constraint firstAttribute="height" constant="49" id="caC-V7-QFe"/>
-                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal" title="+10">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="pcr-a7-MN2"/>
+                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="m8J-kZ-YZa"/>
+                                </connections>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cdI-QO-hOC">
+                                <rect key="frame" x="168" y="263" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal" title="+50">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="iva-jD-BLJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="Dkb-zD-IN7"/>
+                                </connections>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="slS-SP-GhN">
+                                <rect key="frame" x="50" y="263" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="+0.01">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,16 +62,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="WhJ-MA-FVA"/>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="mLJ-G5-GsW"/>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="BDK-hI-9uM"/>
+                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="hvq-p6-yDc"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-tY-Efe">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="gPJ-Xa-p1V"/>
-                                </constraints>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ha4-Rw-vlc">
+                                <rect key="frame" x="50" y="326" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="+0.1">
+                                <state key="normal" title="+5">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -45,31 +79,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="dtp-ph-ESL"/>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="crs-wU-Azb"/>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="edS-a4-wfg"/>
+                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="mtO-5z-uJp"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQy-Ll-Ohp">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Cbj-VC-cme"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="+0.25">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="LeC-am-LXZ"/>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="2Xh-cQ-Rne"/>
-                                </connections>
-                            </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSt-bn-hMe">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="WJx-JT-cFd"/>
-                                </constraints>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wSt-bn-hMe">
+                                <rect key="frame" x="226" y="263" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="+1">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,24 +99,9 @@
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="ypU-Hr-dnE"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lc-lV-rZE">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="hys-th-a06"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="+5">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="WJj-E5-V0C"/>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="wkL-Rv-AoZ"/>
-                                </connections>
-                            </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEW-SQ-2NE">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pEW-SQ-2NE">
+                                <rect key="frame" x="110" y="326" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="+10">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,7 +115,9 @@
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="WYY-Bf-pkV"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9F-1v-xec">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B9F-1v-xec">
+                                <rect key="frame" x="168" y="326" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="+50">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,7 +131,9 @@
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="X1d-gd-x4l"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-cJ-8BU">
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sv8-cJ-8BU">
+                                <rect key="frame" x="226" y="326" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="+100">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,28 +147,21 @@
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="j2R-QH-Gvn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="MPE-Oe-u6m">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="152" id="51h-E0-A6I"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="MPE-Oe-u6m">
+                                <rect key="frame" x="20" y="50" width="280" height="152"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="99"/>
                                 <color key="textColor" red="0.23626833550000001" green="0.21369182210000001" blue="0.17504393779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.85831871810000004" green="0.77788829230000001" blue="0.79670397630000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="4" height="-1"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K74-Q8-cq8">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="173" id="1C8-Dm-nj6"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="K74-Q8-cq8">
+                                <rect key="frame" x="20" y="214" width="173" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9J-D7-x4X">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5Cx-Ix-1j1"/>
-                                    <constraint firstAttribute="width" constant="110" id="Er3-nd-N0V"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L9J-D7-x4X">
+                                <rect key="frame" x="201" y="214" width="110" height="31"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Enter Purchase">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,7 +174,9 @@
                                     <action selector="purchaseEntered:" destination="auB-Y5-dMS" eventType="touchUpInside" id="eNe-g5-7iF"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cND-Di-kwd">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="cND-Di-kwd">
+                                <rect key="frame" x="50" y="396" width="141" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segments>
                                     <segment title="Spend"/>
                                     <segment title="Save"/>
@@ -185,51 +185,23 @@
                                     <action selector="modeSwitchValueChanged:" destination="auB-Y5-dMS" eventType="valueChanged" id="Jak-f5-LaV"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSf-r3-KCh">
+                                <rect key="frame" x="216" y="397" width="60" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="Vc5-2O-34B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="Sv8-cJ-8BU" firstAttribute="top" secondItem="B9F-1v-xec" secondAttribute="top" type="default" id="0iS-8V-B7M"/>
-                            <constraint firstItem="4ca-TA-vvY" firstAttribute="trailing" secondItem="xxz-qu-c4d" secondAttribute="trailing" type="default" id="0k6-h1-8Yo"/>
-                            <constraint firstItem="MPE-Oe-u6m" firstAttribute="top" secondItem="xxz-qu-c4d" secondAttribute="top" constant="50" id="1ps-WF-IQU"/>
-                            <constraint firstItem="L9J-D7-x4X" firstAttribute="centerY" secondItem="K74-Q8-cq8" secondAttribute="centerY" type="default" id="2Pv-4a-VtJ"/>
-                            <constraint firstItem="4ca-TA-vvY" firstAttribute="leading" secondItem="xxz-qu-c4d" secondAttribute="leading" type="default" id="2c7-QF-Cba"/>
-                            <constraint firstItem="EQy-Ll-Ohp" firstAttribute="bottom" secondItem="rSP-tY-Efe" secondAttribute="bottom" type="default" id="3VQ-Jt-ejP"/>
-                            <constraint firstItem="cND-Di-kwd" firstAttribute="centerX" secondItem="MPE-Oe-u6m" secondAttribute="centerX" type="default" id="4iB-kR-ojd"/>
-                            <constraint firstItem="pEW-SQ-2NE" firstAttribute="leading" secondItem="8lc-lV-rZE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6Dm-vk-iPJ"/>
-                            <constraint firstItem="wSt-bn-hMe" firstAttribute="leading" secondItem="EQy-Ll-Ohp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="9LB-VA-BSd"/>
-                            <constraint firstItem="8lc-lV-rZE" firstAttribute="leading" secondItem="Md6-Tw-kBi" secondAttribute="leading" type="default" id="B38-vt-glD"/>
-                            <constraint firstAttribute="bottom" secondItem="Md6-Tw-kBi" secondAttribute="bottom" constant="148" id="BWj-eT-3hI"/>
-                            <constraint firstItem="Sv8-cJ-8BU" firstAttribute="leading" secondItem="B9F-1v-xec" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C0W-bC-9ZQ"/>
-                            <constraint firstItem="EQy-Ll-Ohp" firstAttribute="top" secondItem="rSP-tY-Efe" secondAttribute="top" type="default" id="Cnj-P6-NOX"/>
-                            <constraint firstItem="rSP-tY-Efe" firstAttribute="top" secondItem="Md6-Tw-kBi" secondAttribute="top" type="default" id="Esz-17-01r"/>
-                            <constraint firstItem="Sv8-cJ-8BU" firstAttribute="bottom" secondItem="B9F-1v-xec" secondAttribute="bottom" type="default" id="Gon-Qd-bkT"/>
-                            <constraint firstItem="L9J-D7-x4X" firstAttribute="leading" secondItem="K74-Q8-cq8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ILZ-cD-xaN"/>
-                            <constraint firstAttribute="trailing" secondItem="MPE-Oe-u6m" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="KZi-vv-TEC"/>
-                            <constraint firstItem="pEW-SQ-2NE" firstAttribute="bottom" secondItem="8lc-lV-rZE" secondAttribute="bottom" type="default" id="KaR-Rk-a5W"/>
-                            <constraint firstItem="4ca-TA-vvY" firstAttribute="top" secondItem="xxz-qu-c4d" secondAttribute="top" type="default" id="LNt-Qn-LtT"/>
-                            <constraint firstItem="wSt-bn-hMe" firstAttribute="top" secondItem="EQy-Ll-Ohp" secondAttribute="top" type="default" id="LnO-hi-7hO"/>
-                            <constraint firstItem="L9J-D7-x4X" firstAttribute="baseline" secondItem="K74-Q8-cq8" secondAttribute="baseline" type="default" id="Lnj-2L-fQC"/>
-                            <constraint firstItem="B9F-1v-xec" firstAttribute="top" secondItem="pEW-SQ-2NE" secondAttribute="top" type="default" id="MuG-o6-FTf"/>
-                            <constraint firstItem="Sv8-cJ-8BU" firstAttribute="leading" secondItem="wSt-bn-hMe" secondAttribute="leading" type="default" id="NcY-H9-4fF"/>
-                            <constraint firstItem="B9F-1v-xec" firstAttribute="leading" secondItem="EQy-Ll-Ohp" secondAttribute="leading" type="default" id="RB4-BB-y0U"/>
-                            <constraint firstItem="K74-Q8-cq8" firstAttribute="leading" secondItem="xxz-qu-c4d" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UKO-ad-l7K"/>
-                            <constraint firstItem="L9J-D7-x4X" firstAttribute="top" secondItem="K74-Q8-cq8" secondAttribute="top" type="default" id="UgL-pp-iKO"/>
-                            <constraint firstItem="B9F-1v-xec" firstAttribute="leading" secondItem="pEW-SQ-2NE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Zvf-da-Gdf"/>
-                            <constraint firstItem="rSP-tY-Efe" firstAttribute="leading" secondItem="Md6-Tw-kBi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="a1w-Xb-xD8"/>
-                            <constraint firstItem="Sv8-cJ-8BU" firstAttribute="trailing" secondItem="wSt-bn-hMe" secondAttribute="trailing" type="default" id="cEQ-bt-Bz7"/>
-                            <constraint firstAttribute="bottom" secondItem="cND-Di-kwd" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cqm-Mo-5W8"/>
-                            <constraint firstItem="pEW-SQ-2NE" firstAttribute="top" secondItem="8lc-lV-rZE" secondAttribute="top" type="default" id="eex-mA-liN"/>
-                            <constraint firstItem="L9J-D7-x4X" firstAttribute="top" secondItem="xxz-qu-c4d" secondAttribute="top" constant="214" id="fON-2r-r19"/>
-                            <constraint firstItem="Md6-Tw-kBi" firstAttribute="leading" secondItem="xxz-qu-c4d" secondAttribute="leading" constant="50" id="g73-iE-xy7"/>
-                            <constraint firstItem="wSt-bn-hMe" firstAttribute="bottom" secondItem="EQy-Ll-Ohp" secondAttribute="bottom" type="default" id="iqG-dv-caE"/>
-                            <constraint firstItem="rSP-tY-Efe" firstAttribute="bottom" secondItem="Md6-Tw-kBi" secondAttribute="bottom" type="default" id="iy2-vQ-aXC"/>
-                            <constraint firstItem="pEW-SQ-2NE" firstAttribute="leading" secondItem="rSP-tY-Efe" secondAttribute="leading" type="default" id="lXM-fK-Zbx"/>
-                            <constraint firstItem="B9F-1v-xec" firstAttribute="bottom" secondItem="pEW-SQ-2NE" secondAttribute="bottom" type="default" id="mF7-Rv-Moy"/>
-                            <constraint firstItem="MPE-Oe-u6m" firstAttribute="leading" secondItem="xxz-qu-c4d" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mph-pS-GgI"/>
-                            <constraint firstAttribute="bottom" secondItem="8lc-lV-rZE" secondAttribute="bottom" constant="85" id="nCn-up-SGp"/>
-                            <constraint firstItem="EQy-Ll-Ohp" firstAttribute="leading" secondItem="rSP-tY-Efe" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="o3i-vz-VVd"/>
-                            <constraint firstItem="4ca-TA-vvY" firstAttribute="bottom" secondItem="xxz-qu-c4d" secondAttribute="bottom" type="default" id="oJG-d8-xEM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hUw-vX-Tnn">
                         <barButtonItem key="rightBarButtonItem" title="History" id="gph-nx-VyF"/>
@@ -239,13 +211,13 @@
                         <outlet property="moneyRemainedLabel" destination="MPE-Oe-u6m" id="Eyg-Mi-NyK"/>
                         <outlet property="purchaseTextField" destination="K74-Q8-cq8" id="UDm-Gf-t27"/>
                         <outletCollection property="quickAddButtons" destination="wSt-bn-hMe" id="lel-4D-3FB"/>
-                        <outletCollection property="quickAddButtons" destination="Md6-Tw-kBi" id="0PO-er-DIA"/>
-                        <outletCollection property="quickAddButtons" destination="rSP-tY-Efe" id="oAz-0u-P7m"/>
-                        <outletCollection property="quickAddButtons" destination="EQy-Ll-Ohp" id="rFO-X2-fp4"/>
                         <outletCollection property="quickAddButtons" destination="B9F-1v-xec" id="2gk-9B-pzn"/>
                         <outletCollection property="quickAddButtons" destination="pEW-SQ-2NE" id="ZTH-qm-zQw"/>
-                        <outletCollection property="quickAddButtons" destination="8lc-lV-rZE" id="DLy-rG-AVK"/>
                         <outletCollection property="quickAddButtons" destination="Sv8-cJ-8BU" id="Cee-p0-ybT"/>
+                        <outletCollection property="quickAddButtons" destination="ha4-Rw-vlc" id="x4e-bE-U9D"/>
+                        <outletCollection property="quickAddButtons" destination="slS-SP-GhN" id="292-Ik-M4X"/>
+                        <outletCollection property="quickAddButtons" destination="pQn-3e-x02" id="7Ff-Dl-GDz"/>
+                        <outletCollection property="quickAddButtons" destination="cdI-QO-hOC" id="HYu-lx-Kg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A41-B8-uow" sceneMemberID="firstResponder"/>
@@ -255,16 +227,13 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="601" y="56"/>
+            <point key="canvasLocation" x="74" y="1"/>
         </scene>
     </scenes>
     <resources>
         <image name="CNV000013 (1).jpg" width="569" height="842"/>
     </resources>
     <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="QPViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
             <relationships>
@@ -272,7 +241,7 @@
                 <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
                 <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="quickAddSwitchChanged:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="purchaseTextField" candidateClass="UITextField"/>
