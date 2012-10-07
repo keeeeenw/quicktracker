@@ -18,12 +18,13 @@
 		5CCDFE6716212A2800FFE77D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDFE6616212A2800FFE77D /* Default-568h@2x.png */; };
 		5CCDFE6A16212A2800FFE77D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDFE6816212A2800FFE77D /* MainStoryboard_iPhone.storyboard */; };
 		5CCDFE6D16212A2800FFE77D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDFE6B16212A2800FFE77D /* MainStoryboard_iPad.storyboard */; };
-		5CCDFE7016212A2800FFE77D /* QuickPlanerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDFE6F16212A2800FFE77D /* QuickPlanerViewController.m */; };
 		5CCDFE7816212A2800FFE77D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE7716212A2800FFE77D /* SenTestingKit.framework */; };
 		5CCDFE7916212A2800FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
 		5CCDFE7A16212A2800FFE77D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5216212A2700FFE77D /* Foundation.framework */; };
 		5CCDFE8216212A2800FFE77D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDFE8016212A2800FFE77D /* InfoPlist.strings */; };
 		5CCDFE8516212A2800FFE77D /* QuickPlanerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDFE8416212A2800FFE77D /* QuickPlanerTests.m */; };
+		5CE1D42D16212B3E00BE14BE /* CNV000013 (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CE1D42C16212B3E00BE14BE /* CNV000013 (1).jpg */; };
+		5CE1D43116212B5900BE14BE /* QPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE1D43016212B5900BE14BE /* QPViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,14 +53,15 @@
 		5CCDFE6616212A2800FFE77D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CCDFE6916212A2800FFE77D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		5CCDFE6C16212A2800FFE77D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		5CCDFE6E16212A2800FFE77D /* QuickPlanerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickPlanerViewController.h; sourceTree = "<group>"; };
-		5CCDFE6F16212A2800FFE77D /* QuickPlanerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickPlanerViewController.m; sourceTree = "<group>"; };
 		5CCDFE7616212A2800FFE77D /* QuickPlanerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickPlanerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCDFE7716212A2800FFE77D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5CCDFE7F16212A2800FFE77D /* QuickPlanerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickPlanerTests-Info.plist"; sourceTree = "<group>"; };
 		5CCDFE8116212A2800FFE77D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5CCDFE8316212A2800FFE77D /* QuickPlanerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickPlanerTests.h; sourceTree = "<group>"; };
 		5CCDFE8416212A2800FFE77D /* QuickPlanerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickPlanerTests.m; sourceTree = "<group>"; };
+		5CE1D42C16212B3E00BE14BE /* CNV000013 (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CNV000013 (1).jpg"; sourceTree = "<group>"; };
+		5CE1D42F16212B5900BE14BE /* QPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPViewController.h; sourceTree = "<group>"; };
+		5CE1D43016212B5900BE14BE /* QPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +121,10 @@
 		5CCDFE5616212A2700FFE77D /* QuickPlaner */ = {
 			isa = PBXGroup;
 			children = (
-				5CCDFE5F16212A2800FFE77D /* QuickPlanerAppDelegate.h */,
-				5CCDFE6016212A2800FFE77D /* QuickPlanerAppDelegate.m */,
 				5CCDFE6816212A2800FFE77D /* MainStoryboard_iPhone.storyboard */,
 				5CCDFE6B16212A2800FFE77D /* MainStoryboard_iPad.storyboard */,
-				5CCDFE6E16212A2800FFE77D /* QuickPlanerViewController.h */,
-				5CCDFE6F16212A2800FFE77D /* QuickPlanerViewController.m */,
+				5CE1D42F16212B5900BE14BE /* QPViewController.h */,
+				5CE1D43016212B5900BE14BE /* QPViewController.m */,
 				5CCDFE5716212A2700FFE77D /* Supporting Files */,
 			);
 			path = QuickPlaner;
@@ -133,6 +133,9 @@
 		5CCDFE5716212A2700FFE77D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5CE1D42C16212B3E00BE14BE /* CNV000013 (1).jpg */,
+				5CCDFE5F16212A2800FFE77D /* QuickPlanerAppDelegate.h */,
+				5CCDFE6016212A2800FFE77D /* QuickPlanerAppDelegate.m */,
 				5CCDFE5816212A2700FFE77D /* QuickPlaner-Info.plist */,
 				5CCDFE5916212A2800FFE77D /* InfoPlist.strings */,
 				5CCDFE5C16212A2800FFE77D /* main.m */,
@@ -241,6 +244,7 @@
 				5CCDFE6716212A2800FFE77D /* Default-568h@2x.png in Resources */,
 				5CCDFE6A16212A2800FFE77D /* MainStoryboard_iPhone.storyboard in Resources */,
 				5CCDFE6D16212A2800FFE77D /* MainStoryboard_iPad.storyboard in Resources */,
+				5CE1D42D16212B3E00BE14BE /* CNV000013 (1).jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +281,7 @@
 			files = (
 				5CCDFE5D16212A2800FFE77D /* main.m in Sources */,
 				5CCDFE6116212A2800FFE77D /* QuickPlanerAppDelegate.m in Sources */,
-				5CCDFE7016212A2800FFE77D /* QuickPlanerViewController.m in Sources */,
+				5CE1D43116212B5900BE14BE /* QPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +465,7 @@
 				5CCDFE8A16212A2800FFE77D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CCDFE8B16212A2800FFE77D /* Build configuration list for PBXNativeTarget "QuickPlanerTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +474,7 @@
 				5CCDFE8D16212A2800FFE77D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
