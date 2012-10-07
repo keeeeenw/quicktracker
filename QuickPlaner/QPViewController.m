@@ -244,14 +244,22 @@
     } else {
         self.appMode = [[NSUserDefaults standardUserDefaults] objectForKey:MODE];
     }
+    
     if (self.appMode) { //This means app is using Saving Mode
         [self updateQuickAddButtonsUsingSign:@"+"];
+        [self.modeSwitch setSelectedSegmentIndex:1];
     } else { //This means app is using Spending Mode
         [self updateQuickAddButtonsUsingSign:@"-"];
+        [self.modeSwitch setSelectedSegmentIndex:0];
     }
     
     //Setting up title
     self.navigationItem.title = self.title;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
