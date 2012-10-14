@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CBBD133162B3EC0000D545B /* IMG_0202.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CBBD132162B3EC0000D545B /* IMG_0202.jpg */; };
 		5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
 		5CCDFE5316212A2700FFE77D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5216212A2700FFE77D /* Foundation.framework */; };
 		5CCDFE5516212A2700FFE77D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5416212A2700FFE77D /* CoreGraphics.framework */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CBBD132162B3EC0000D545B /* IMG_0202.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0202.jpg; sourceTree = "<group>"; };
 		5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCDFE5016212A2700FFE77D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5CCDFE5216212A2700FFE77D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,6 +135,7 @@
 		5CCDFE5716212A2700FFE77D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5CBBD132162B3EC0000D545B /* IMG_0202.jpg */,
 				5CE1D42C16212B3E00BE14BE /* CNV000013 (1).jpg */,
 				5CCDFE5F16212A2800FFE77D /* QuickPlanerAppDelegate.h */,
 				5CCDFE6016212A2800FFE77D /* QuickPlanerAppDelegate.m */,
@@ -245,6 +248,7 @@
 				5CCDFE6A16212A2800FFE77D /* MainStoryboard_iPhone.storyboard in Resources */,
 				5CCDFE6D16212A2800FFE77D /* MainStoryboard_iPad.storyboard in Resources */,
 				5CE1D42D16212B3E00BE14BE /* CNV000013 (1).jpg in Resources */,
+				5CBBD133162B3EC0000D545B /* IMG_0202.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
