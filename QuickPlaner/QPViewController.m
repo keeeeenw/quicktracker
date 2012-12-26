@@ -83,10 +83,10 @@
         [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
             if (!success) { //if not success rollback the updates on NSUserDefault 
-                NSLog(@"New Data Saving Failed");
+                NSLog(@"New Spending Data Saving Failed");
                 [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
             } else{
-                NSLog(@"New Data Saving Succeed");
+                NSLog(@"New Spending Data Saving Succeed");
             }
         }];
     }];
@@ -111,15 +111,46 @@
 - (void) processSaving:(NSString *) saveAmount
             fromButton:(UIButton *)sender {
     [self startSpinner:@"Updating Saving"];
+    
+    //To spend up the responsiveness of the UI the money label is updated using NSUserDefaults instead of CoreData
+    [self updateSavingByAmount:[saveAmount doubleValue]];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    //Create save_id by using current time stamp
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *save_id = [NSString stringWithFormat:@"%f", timeStamp];
+    
+    //Create saveInfo to be recieved savedWithPurchaseInfo:inManangedObjectContext
+    NSDictionary *saveInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                              save_id,SAVE_ID,
+                              date,SAVE_DATE,
+                              [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
+                              nil];
+    
+    [DocumentHelper openDocument:@"Saving" usingBlock:^(UIManagedDocument *document){
+        [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            if (!success) { //if not success rollback the updates on NSUserDefault
+                NSLog(@"New Saving Data Saving Failed");
+                [self updateSavingByAmount:-1*[saveAmount doubleValue]];
+            } else{
+                NSLog(@"New Saving Data Saving Succeed");
+            }
+        }];
+    }];
+    [self stopSpinner];
+    sender.hidden = NO;
+}
+
+- (void) updateSavingByAmount:(double) saveAmount{
     double saving =  [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue];
-    saving += [saveAmount doubleValue];
+    saving += saveAmount;
     
     [[NSUserDefaults standardUserDefaults] setDouble:saving forKey:SAVE];
     
-    double total = [self moneyValueInMoneyRemainedLabel] + [saveAmount doubleValue];
+    double total = [self moneyValueInMoneyRemainedLabel] + saveAmount;
     self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
-    [self stopSpinner];
-    sender.hidden = NO;
 }
 
 - (double) moneyValueInMoneyRemainedLabel{
