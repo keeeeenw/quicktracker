@@ -54,6 +54,12 @@
     }
 }
 
++ (void)removeDocument:(NSString *)name {
+    NSLog(@"Deleting %@", name);
+    NSURL *fileURL = [self documentFileURL:name];
+    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+}
+
 + (NSURL *)documentFileURL:(NSString *)name{
     NSURL *documentURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *databaseURL = [documentURL URLByAppendingPathComponent:@"CoreData"];

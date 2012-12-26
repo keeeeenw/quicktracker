@@ -79,7 +79,7 @@
                                   nil];
     
     //Storing Information to Database in a seperate thread
-    [DocumentHelper openDocument:@"Spending" usingBlock:^(UIManagedDocument *document){
+    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
         [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
             if (!success) { //if not success rollback the updates on NSUserDefault 
@@ -128,7 +128,7 @@
                               [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
                               nil];
     
-    [DocumentHelper openDocument:@"Saving" usingBlock:^(UIManagedDocument *document){
+    [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
         [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
             if (!success) { //if not success rollback the updates on NSUserDefault
@@ -267,6 +267,8 @@
 - (IBAction)resetPressed:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
+    [DocumentHelper removeDocument:SAVE];
+    [DocumentHelper removeDocument:SPEND];
     [self updateMoneyRemainedLabel];
 }
 

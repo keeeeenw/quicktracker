@@ -168,13 +168,13 @@
 		5CCDFE5616212A2700FFE77D /* QuickPlaner */ = {
 			isa = PBXGroup;
 			children = (
-				5C118820168A97A60016AF81 /* CoreData */,
 				5CCDFE6816212A2800FFE77D /* MainStoryboard_iPhone.storyboard */,
 				5CCDFE6B16212A2800FFE77D /* MainStoryboard_iPad.storyboard */,
 				5CE1D42F16212B5900BE14BE /* QPViewController.h */,
 				5CE1D43016212B5900BE14BE /* QPViewController.m */,
 				5C11881B168A97280016AF81 /* DocumentHelper.h */,
 				5C11881C168A97280016AF81 /* DocumentHelper.m */,
+				5C118820168A97A60016AF81 /* CoreData */,
 				5CCDFE5716212A2700FFE77D /* Supporting Files */,
 			);
 			path = QuickPlaner;
