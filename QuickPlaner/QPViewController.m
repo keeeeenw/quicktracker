@@ -7,6 +7,9 @@
 //
 
 #import "QPViewController.h"
+#import "DocumentHelper.h"
+#import "Spending+Budget.h"
+#import "Saving+Budget.h"
 
 #define PURCHASE_ID @"purchase_id"
 #define PURCHASE_NAME @"purchase_name"
@@ -55,19 +58,54 @@
     self.navigationItem.title = self.title;
 }
 
-- (void) processPurchase:(NSString *)purchaseAnswer
+- (void) processPurchase:(NSString *)purchaseAmount
               fromButton:(UIButton *)sender{
     [self startSpinner:@"Updating Spending"];
     
+    //To spend up the responsiveness of the UI the money label is updated using NSUserDefaults instead of CoreData
+    [self updateSpendingByAmount:[purchaseAmount doubleValue]];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    
+    //Create purchase_id by using current time stamp
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *purchase_id = [NSString stringWithFormat:@"%f", timeStamp];
+    
+    //Create purchaseInfo to be recieved spendWithPurchaseInfo:inManangedObjectContext
+    NSDictionary *purchaseInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  purchase_id,PURCHASE_ID,
+                                  date,PURCHASE_DATE,
+                                  [NSNumber numberWithDouble:[purchaseAmount doubleValue]], PURCHASE_AMOUNT,
+                                  nil];
+    
+    //Storing Information to Database in a seperate thread
+    [DocumentHelper openDocument:@"Spending" usingBlock:^(UIManagedDocument *document){
+        [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            if (!success) { //if not success rollback the updates on NSUserDefault 
+                NSLog(@"New Data Saving Failed");
+                [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
+            } else{
+                NSLog(@"New Data Saving Succeed");
+            }
+        }];
+    }];
+    
+    if (sender) {
+        sender.hidden = NO;
+    }
+    [self stopSpinner];
+}
+
+- (void) updateSpendingByAmount:(double) purchaseAmount{
+    
     double spending =  [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
-    spending -= [purchaseAnswer doubleValue];
+    spending -= purchaseAmount;
     
     [[NSUserDefaults standardUserDefaults] setDouble:spending forKey:SPEND];
     
-    double total = [self moneyValueInMoneyRemainedLabel] - [purchaseAnswer doubleValue];
+    double total = [self moneyValueInMoneyRemainedLabel] - purchaseAmount;
     self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
-    [self stopSpinner];
-    sender.hidden = NO;
 }
 
 - (void) processSaving:(NSString *) saveAmount

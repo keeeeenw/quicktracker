@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C11881D168A97280016AF81 /* DocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C11881C168A97280016AF81 /* DocumentHelper.m */; };
+		5C11881E168A97280016AF81 /* DocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C11881C168A97280016AF81 /* DocumentHelper.m */; };
+		5C11882A168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */; };
+		5C11882B168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */; };
+		5C11882C168A97B80016AF81 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118823168A97B80016AF81 /* Saving.m */; };
+		5C11882D168A97B80016AF81 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118823168A97B80016AF81 /* Saving.m */; };
+		5C11882E168A97B80016AF81 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118825168A97B80016AF81 /* Spending.m */; };
+		5C11882F168A97B80016AF81 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118825168A97B80016AF81 /* Spending.m */; };
+		5C118830168A97B80016AF81 /* Saving+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118827168A97B80016AF81 /* Saving+Budget.m */; };
+		5C118831168A97B80016AF81 /* Saving+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118827168A97B80016AF81 /* Saving+Budget.m */; };
+		5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
+		5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
+		5C118835168A9AC80016AF81 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C118834168A9AC80016AF81 /* CoreData.framework */; };
 		5CB411F3162BE0F900C89577 /* IMG_1247.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB411F2162BE0F900C89577 /* IMG_1247.jpg */; };
 		5CBBD133162B3EC0000D545B /* IMG_0202.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CBBD132162B3EC0000D545B /* IMG_0202.jpg */; };
 		5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
@@ -40,6 +53,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C11881B168A97280016AF81 /* DocumentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentHelper.h; sourceTree = "<group>"; };
+		5C11881C168A97280016AF81 /* DocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentHelper.m; sourceTree = "<group>"; };
+		5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBPModel.xcdatamodel; sourceTree = "<group>"; };
+		5C118822168A97B80016AF81 /* Saving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saving.h; sourceTree = "<group>"; };
+		5C118823168A97B80016AF81 /* Saving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saving.m; sourceTree = "<group>"; };
+		5C118824168A97B80016AF81 /* Spending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spending.h; sourceTree = "<group>"; };
+		5C118825168A97B80016AF81 /* Spending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spending.m; sourceTree = "<group>"; };
+		5C118826168A97B80016AF81 /* Saving+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Saving+Budget.h"; sourceTree = "<group>"; };
+		5C118827168A97B80016AF81 /* Saving+Budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Saving+Budget.m"; sourceTree = "<group>"; };
+		5C118828168A97B80016AF81 /* Spending+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spending+Budget.h"; sourceTree = "<group>"; };
+		5C118829168A97B80016AF81 /* Spending+Budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Spending+Budget.m"; sourceTree = "<group>"; };
+		5C118834168A9AC80016AF81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5CB411F2162BE0F900C89577 /* IMG_1247.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_1247.jpg; sourceTree = "<group>"; };
 		5CBBD132162B3EC0000D545B /* IMG_0202.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0202.jpg; sourceTree = "<group>"; };
 		5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C118835168A9AC80016AF81 /* CoreData.framework in Frameworks */,
 				5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */,
 				5CCDFE5316212A2700FFE77D /* Foundation.framework in Frameworks */,
 				5CCDFE5516212A2700FFE77D /* CoreGraphics.framework in Frameworks */,
@@ -92,9 +118,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C118820168A97A60016AF81 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */,
+				5C118822168A97B80016AF81 /* Saving.h */,
+				5C118823168A97B80016AF81 /* Saving.m */,
+				5C118824168A97B80016AF81 /* Spending.h */,
+				5C118825168A97B80016AF81 /* Spending.m */,
+				5C118826168A97B80016AF81 /* Saving+Budget.h */,
+				5C118827168A97B80016AF81 /* Saving+Budget.m */,
+				5C118828168A97B80016AF81 /* Spending+Budget.h */,
+				5C118829168A97B80016AF81 /* Spending+Budget.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		5CCDFE4116212A2700FFE77D = {
 			isa = PBXGroup;
 			children = (
+				5C118834168A9AC80016AF81 /* CoreData.framework */,
 				5CCDFE5616212A2700FFE77D /* QuickPlaner */,
 				5CCDFE7D16212A2800FFE77D /* QuickPlanerTests */,
 				5CCDFE4F16212A2700FFE77D /* Frameworks */,
@@ -125,10 +168,13 @@
 		5CCDFE5616212A2700FFE77D /* QuickPlaner */ = {
 			isa = PBXGroup;
 			children = (
+				5C118820168A97A60016AF81 /* CoreData */,
 				5CCDFE6816212A2800FFE77D /* MainStoryboard_iPhone.storyboard */,
 				5CCDFE6B16212A2800FFE77D /* MainStoryboard_iPad.storyboard */,
 				5CE1D42F16212B5900BE14BE /* QPViewController.h */,
 				5CE1D43016212B5900BE14BE /* QPViewController.m */,
+				5C11881B168A97280016AF81 /* DocumentHelper.h */,
+				5C11881C168A97280016AF81 /* DocumentHelper.m */,
 				5CCDFE5716212A2700FFE77D /* Supporting Files */,
 			);
 			path = QuickPlaner;
@@ -290,6 +336,12 @@
 				5CCDFE5D16212A2800FFE77D /* main.m in Sources */,
 				5CCDFE6116212A2800FFE77D /* QuickPlanerAppDelegate.m in Sources */,
 				5CE1D43116212B5900BE14BE /* QPViewController.m in Sources */,
+				5C11881D168A97280016AF81 /* DocumentHelper.m in Sources */,
+				5C11882A168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */,
+				5C11882C168A97B80016AF81 /* Saving.m in Sources */,
+				5C11882E168A97B80016AF81 /* Spending.m in Sources */,
+				5C118830168A97B80016AF81 /* Saving+Budget.m in Sources */,
+				5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +350,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCDFE8516212A2800FFE77D /* QuickPlanerTests.m in Sources */,
+				5C11881E168A97280016AF81 /* DocumentHelper.m in Sources */,
+				5C11882B168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */,
+				5C11882D168A97B80016AF81 /* Saving.m in Sources */,
+				5C11882F168A97B80016AF81 /* Spending.m in Sources */,
+				5C118831168A97B80016AF81 /* Saving+Budget.m in Sources */,
+				5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
