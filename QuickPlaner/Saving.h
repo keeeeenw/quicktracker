@@ -1,9 +1,9 @@
 //
 //  Saving.h
-//  My Budget Planner
+//  QuickPlaner
 //
-//  Created by Zixiao on 12-8-8.
-//  Copyright (c) 2012年 Zixiao Wang. All rights reserved.
+//  Created by Zixiao on 12/30/12.
+//  Copyright (c) 2012 Zixiao Wang. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,8 +13,9 @@
 @interface Saving : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * amount;
-@property (nonatomic, retain) NSString * describe;
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * describe;
 @property (nonatomic, retain) NSString * save_id;
+@property (nonatomic, retain) NSString * section_id;
 
 @end

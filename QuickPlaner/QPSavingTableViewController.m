@@ -46,7 +46,7 @@
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
-        self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:document.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+        self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:document.managedObjectContext sectionNameKeyPath:@"section_id" cacheName:nil];
     }];
 }
 
@@ -59,10 +59,42 @@
     
     // Configure the cell...
     Saving *save = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = [save.amount stringValue];
-    cell.detailTextLabel.text = [save.date description];
+    cell.textLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", [save.amount doubleValue]];
+    
+    if (save.describe) {
+        cell.detailTextLabel.text = save.describe;
+    } else {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:save.date];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d", [components hour],[components minute]];
+    }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	//We unpack section_id, which is defined by secion_id = (year * 10000) + (month * 100) + day
+    
+    id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
+    
+    static NSArray *monthSymbols = nil;
+    
+    if (!monthSymbols) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setCalendar:[NSCalendar currentCalendar]];
+        monthSymbols = [formatter shortMonthSymbols];
+    }
+    
+    NSInteger numericSection = [[theSection name] integerValue];
+    
+	NSInteger year = numericSection / 10000;
+    NSInteger month = (numericSection - (year*10000)) / 100;
+	NSInteger day = numericSection - (year * 10000 + month*100);
+	
+	NSString *titleString = [NSString stringWithFormat:@"%@, %d %d", [monthSymbols objectAtIndex:month-1], day, year];
+	
+	return titleString;
 }
 
 @end

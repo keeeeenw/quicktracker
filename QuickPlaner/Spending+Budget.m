@@ -44,7 +44,14 @@
     spending.name = [purchaseInfo valueForKey:PURCHASE_NAME];
     spending.date = [purchaseInfo valueForKey:PURCHASE_DATE];
     spending.amount = [purchaseInfo valueForKey:PURCHASE_AMOUNT];
-    //NSLog(@"%@",spending);
+    
+    //Sections in TableViewController are organized by day, month and year. secion_id = (year * 10000) + (month * 100) + day
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[purchaseInfo valueForKey:PURCHASE_DATE]];
+    NSString *tmp = [NSString stringWithFormat:@"%d", ([components year] * 10000) + ([components month]*100) + [components day]];
+    
+    spending.section_id = tmp;
     
     return spending;
 }

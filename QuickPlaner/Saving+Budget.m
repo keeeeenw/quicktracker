@@ -43,6 +43,14 @@
     save.amount = [saveInfo valueForKey:SAVE_AMOUNT];
     //NSLog(@"%@",save);
     
+    //Sections in TableViewController are organized by day, month and year. secion_id = (year * 10000) + (month * 100) + day
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[saveInfo valueForKey:SAVE_DATE]];
+    NSString *tmp = [NSString stringWithFormat:@"%d", ([components year] * 10000) + ([components month]*100) + [components day]];
+    
+    save.section_id = tmp;
+    
     return save;
 }
 

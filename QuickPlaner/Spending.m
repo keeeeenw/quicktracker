@@ -1,9 +1,9 @@
 //
 //  Spending.m
-//  My Budget Planner
+//  QuickPlaner
 //
-//  Created by Zixiao on 12-8-8.
-//  Copyright (c) 2012年 Zixiao Wang. All rights reserved.
+//  Created by Zixiao on 12/30/12.
+//  Copyright (c) 2012 Zixiao Wang. All rights reserved.
 //
 
 #import "Spending.h"
@@ -11,9 +11,10 @@
 
 @implementation Spending
 
-@dynamic name;
 @dynamic amount;
 @dynamic date;
+@dynamic name;
 @dynamic spend_id;
+@dynamic section_id;
 
 @end

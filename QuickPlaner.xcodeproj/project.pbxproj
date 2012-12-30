@@ -11,10 +11,6 @@
 		5C11881E168A97280016AF81 /* DocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C11881C168A97280016AF81 /* DocumentHelper.m */; };
 		5C11882A168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */; };
 		5C11882B168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */; };
-		5C11882C168A97B80016AF81 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118823168A97B80016AF81 /* Saving.m */; };
-		5C11882D168A97B80016AF81 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118823168A97B80016AF81 /* Saving.m */; };
-		5C11882E168A97B80016AF81 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118825168A97B80016AF81 /* Spending.m */; };
-		5C11882F168A97B80016AF81 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118825168A97B80016AF81 /* Spending.m */; };
 		5C118830168A97B80016AF81 /* Saving+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118827168A97B80016AF81 /* Saving+Budget.m */; };
 		5C118831168A97B80016AF81 /* Saving+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118827168A97B80016AF81 /* Saving+Budget.m */; };
 		5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
@@ -28,6 +24,10 @@
 		5C799A19169013AB004C6407 /* QPSavingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A17169013AB004C6407 /* QPSavingTableViewController.m */; };
 		5C799A1C169013CE004C6407 /* QPSpendingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A1B169013CE004C6407 /* QPSpendingTableViewController.m */; };
 		5C799A1D169013CE004C6407 /* QPSpendingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A1B169013CE004C6407 /* QPSpendingTableViewController.m */; };
+		5C799A2816903236004C6407 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A2716903236004C6407 /* Saving.m */; };
+		5C799A2916903236004C6407 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A2716903236004C6407 /* Saving.m */; };
+		5C799A2C16903236004C6407 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A2B16903236004C6407 /* Spending.m */; };
+		5C799A2D16903236004C6407 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A2B16903236004C6407 /* Spending.m */; };
 		5CB411F3162BE0F900C89577 /* IMG_1247.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB411F2162BE0F900C89577 /* IMG_1247.jpg */; };
 		5CBBD133162B3EC0000D545B /* IMG_0202.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CBBD132162B3EC0000D545B /* IMG_0202.jpg */; };
 		5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
@@ -64,10 +64,6 @@
 		5C11881B168A97280016AF81 /* DocumentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentHelper.h; sourceTree = "<group>"; };
 		5C11881C168A97280016AF81 /* DocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentHelper.m; sourceTree = "<group>"; };
 		5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBPModel.xcdatamodel; sourceTree = "<group>"; };
-		5C118822168A97B80016AF81 /* Saving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saving.h; sourceTree = "<group>"; };
-		5C118823168A97B80016AF81 /* Saving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saving.m; sourceTree = "<group>"; };
-		5C118824168A97B80016AF81 /* Spending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spending.h; sourceTree = "<group>"; };
-		5C118825168A97B80016AF81 /* Spending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spending.m; sourceTree = "<group>"; };
 		5C118826168A97B80016AF81 /* Saving+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Saving+Budget.h"; sourceTree = "<group>"; };
 		5C118827168A97B80016AF81 /* Saving+Budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Saving+Budget.m"; sourceTree = "<group>"; };
 		5C118828168A97B80016AF81 /* Spending+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spending+Budget.h"; sourceTree = "<group>"; };
@@ -81,6 +77,10 @@
 		5C799A17169013AB004C6407 /* QPSavingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPSavingTableViewController.m; sourceTree = "<group>"; };
 		5C799A1A169013CE004C6407 /* QPSpendingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPSpendingTableViewController.h; sourceTree = "<group>"; };
 		5C799A1B169013CE004C6407 /* QPSpendingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPSpendingTableViewController.m; sourceTree = "<group>"; };
+		5C799A2616903236004C6407 /* Saving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saving.h; sourceTree = "<group>"; };
+		5C799A2716903236004C6407 /* Saving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Saving.m; sourceTree = "<group>"; };
+		5C799A2A16903236004C6407 /* Spending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spending.h; sourceTree = "<group>"; };
+		5C799A2B16903236004C6407 /* Spending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spending.m; sourceTree = "<group>"; };
 		5CB411F2162BE0F900C89577 /* IMG_1247.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_1247.jpg; sourceTree = "<group>"; };
 		5CBBD132162B3EC0000D545B /* IMG_0202.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0202.jpg; sourceTree = "<group>"; };
 		5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,10 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */,
-				5C118822168A97B80016AF81 /* Saving.h */,
-				5C118823168A97B80016AF81 /* Saving.m */,
-				5C118824168A97B80016AF81 /* Spending.h */,
-				5C118825168A97B80016AF81 /* Spending.m */,
+				5C799A2616903236004C6407 /* Saving.h */,
+				5C799A2A16903236004C6407 /* Spending.h */,
+				5C799A2B16903236004C6407 /* Spending.m */,
+				5C799A2716903236004C6407 /* Saving.m */,
 				5C118826168A97B80016AF81 /* Saving+Budget.h */,
 				5C118827168A97B80016AF81 /* Saving+Budget.m */,
 				5C118828168A97B80016AF81 /* Spending+Budget.h */,
@@ -362,14 +362,14 @@
 				5CE1D43116212B5900BE14BE /* QPViewController.m in Sources */,
 				5C11881D168A97280016AF81 /* DocumentHelper.m in Sources */,
 				5C11882A168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */,
-				5C11882C168A97B80016AF81 /* Saving.m in Sources */,
-				5C11882E168A97B80016AF81 /* Spending.m in Sources */,
 				5C118830168A97B80016AF81 /* Saving+Budget.m in Sources */,
 				5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */,
 				5C68B27B168AB04900BA661A /* QPHistoryTableViewController.m in Sources */,
 				5C799A141690133B004C6407 /* CoreDataTableViewController.m in Sources */,
 				5C799A18169013AB004C6407 /* QPSavingTableViewController.m in Sources */,
 				5C799A1C169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
+				5C799A2816903236004C6407 /* Saving.m in Sources */,
+				5C799A2C16903236004C6407 /* Spending.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +380,14 @@
 				5CCDFE8516212A2800FFE77D /* QuickPlanerTests.m in Sources */,
 				5C11881E168A97280016AF81 /* DocumentHelper.m in Sources */,
 				5C11882B168A97B80016AF81 /* MBPModel.xcdatamodel in Sources */,
-				5C11882D168A97B80016AF81 /* Saving.m in Sources */,
-				5C11882F168A97B80016AF81 /* Spending.m in Sources */,
 				5C118831168A97B80016AF81 /* Saving+Budget.m in Sources */,
 				5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */,
 				5C68B27C168AB04900BA661A /* QPHistoryTableViewController.m in Sources */,
 				5C799A151690133B004C6407 /* CoreDataTableViewController.m in Sources */,
 				5C799A19169013AB004C6407 /* QPSavingTableViewController.m in Sources */,
 				5C799A1D169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
+				5C799A2916903236004C6407 /* Saving.m in Sources */,
+				5C799A2D16903236004C6407 /* Spending.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
