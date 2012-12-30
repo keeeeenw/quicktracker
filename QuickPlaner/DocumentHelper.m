@@ -81,12 +81,26 @@
 
 + (void)removeDocument:(NSString *)name {
     NSLog(@"Deleting %@", name);
-    static UIManagedDocument *database = nil;
-    if (database) {
-        database = nil;
-    }
     NSURL *fileURL = [self documentFileURL:name];
-    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+    static UIManagedDocument *database = nil;
+    
+    database = [[UIManagedDocument alloc]initWithFileURL:fileURL];
+    
+    if (database.documentState == UIDocumentStateNormal){
+        //Already opened
+        [database closeWithCompletionHandler:^(BOOL success){
+            if (success) {
+                [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+                NSLog(@"%@ Deleted", name);
+            }
+        }];
+    } else if (![[NSFileManager defaultManager] fileExistsAtPath:[database.fileURL path]]) {
+        //No Worries
+        NSLog(@"%@ Does Not Exists", name);
+    } else if (database.documentState == UIDocumentStateClosed) {
+        [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+        NSLog(@"%@ Deleted", name);
+    }
 }
 
 + (NSURL *)documentFileURL:(NSString *)name{

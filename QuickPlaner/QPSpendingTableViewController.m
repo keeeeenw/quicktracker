@@ -97,4 +97,8 @@
 	return titleString;
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    return nil; //this hide the section index
+}
+
 @end

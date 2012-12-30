@@ -31,6 +31,45 @@
 
 #pragma mark - Helper Methods
 
+-(void)setup{
+    //Setting up self.purchaseTextField
+    self.purchaseTextField.delegate = self;
+    self.purchaseTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    
+    //Adding CurrencyLabel to self.purchaseTextField
+    UILabel *currencyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    currencyLabel.text = [[[NSNumberFormatter alloc]init]currencySymbol];
+    currencyLabel.font = self.purchaseTextField.font;
+    [currencyLabel sizeToFit];
+    self.purchaseTextField.leftView = currencyLabel;
+    self.purchaseTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    //Setting up self.moneyRemainedLabel
+    [self updateMoneyRemainedLabel];
+    
+    //Updating the digit buttons according to the mode
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:MODE]){
+        [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
+    } else {
+        self.appMode = [[NSUserDefaults standardUserDefaults] objectForKey:MODE];
+    }
+    
+    if (self.appMode) { //This means app is using Saving Mode
+        [self updateQuickAddButtonsUsingSign:@"+"];
+        [self.modeSwitch setSelectedSegmentIndex:1];
+    } else { //This means app is using Spending Mode
+        [self updateQuickAddButtonsUsingSign:@"-"];
+        [self.modeSwitch setSelectedSegmentIndex:0];
+    }
+    
+    //Attempt to Open CoreData Database to spend up the process
+    [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){}];
+    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){}];
+    
+    //Setting up title
+    self.navigationItem.title = self.title;
+}
+
 - (void)startSpinner:(NSString *)activity
 {
     self.navigationItem.title = activity;
@@ -280,7 +319,7 @@
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
     [DocumentHelper removeDocument:SAVE];
     [DocumentHelper removeDocument:SPEND];
-    [self updateMoneyRemainedLabel];
+    [self setup];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -305,42 +344,7 @@
     [super viewWillAppear:animated];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    //Setting up self.purchaseTextField
-    self.purchaseTextField.delegate = self;
-    self.purchaseTextField.keyboardType = UIKeyboardTypeDecimalPad;
-    
-    //Adding CurrencyLabel to self.purchaseTextField
-    UILabel *currencyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    currencyLabel.text = [[[NSNumberFormatter alloc]init]currencySymbol];
-    currencyLabel.font = self.purchaseTextField.font;
-    [currencyLabel sizeToFit];
-    self.purchaseTextField.leftView = currencyLabel;
-    self.purchaseTextField.leftViewMode = UITextFieldViewModeAlways;
-    
-    //Setting up self.moneyRemainedLabel
-    [self updateMoneyRemainedLabel];
-    
-    //Updating the digit buttons according to the mode
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:MODE]){
-        [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
-    } else {
-        self.appMode = [[NSUserDefaults standardUserDefaults] objectForKey:MODE];
-    }
-    
-    if (self.appMode) { //This means app is using Saving Mode
-        [self updateQuickAddButtonsUsingSign:@"+"];
-        [self.modeSwitch setSelectedSegmentIndex:1];
-    } else { //This means app is using Spending Mode
-        [self updateQuickAddButtonsUsingSign:@"-"];
-        [self.modeSwitch setSelectedSegmentIndex:0];
-    }
-    
-    //Attempt to Open CoreData Database to spend up the process
-    [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){}];
-    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){}];
-    
-    //Setting up title
-    self.navigationItem.title = self.title;
+    [self setup];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
