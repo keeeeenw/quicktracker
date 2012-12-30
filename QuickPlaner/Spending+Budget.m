@@ -18,26 +18,33 @@
 +(Spending *)spendingWithPurchaseInfo:(NSDictionary *)purchaseInfo
                inManagedObjectContext:(NSManagedObjectContext *)context{
     Spending *spending;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Spending"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spend_id = %@",[purchaseInfo valueForKey:PURCHASE_ID]];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    request.predicate = predicate;
-    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-   
-    NSArray *matches = [context executeFetchRequest:request error:nil];
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Spending"];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"spend_id = %@",[purchaseInfo valueForKey:PURCHASE_ID]];
+//    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+//    request.predicate = predicate;
+//    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+//   
+//    NSArray *matches = [context executeFetchRequest:request error:nil];
+//    
+//    if (!matches || [matches count] > 1) {
+//        //handle the error
+//    } else if ([matches count] == 0) {
+//        spending = [NSEntityDescription insertNewObjectForEntityForName:@"Spending" inManagedObjectContext:context];
+//        spending.spend_id = [purchaseInfo valueForKey:PURCHASE_ID];
+//        spending.name = [purchaseInfo valueForKey:PURCHASE_NAME];
+//        spending.date = [purchaseInfo valueForKey:PURCHASE_DATE];
+//        spending.amount = [purchaseInfo valueForKey:PURCHASE_AMOUNT];
+//        NSLog(@"%@",spending);
+//    } else {
+//        spending = [matches lastObject];
+//    }
     
-    if (!matches || [matches count] > 1) {
-        //handle the error
-    } else if ([matches count] == 0) {
-        spending = [NSEntityDescription insertNewObjectForEntityForName:@"Spending" inManagedObjectContext:context];
-        spending.spend_id = [purchaseInfo valueForKey:PURCHASE_ID];
-        spending.name = [purchaseInfo valueForKey:PURCHASE_NAME];
-        spending.date = [purchaseInfo valueForKey:PURCHASE_DATE];
-        spending.amount = [purchaseInfo valueForKey:PURCHASE_AMOUNT];
-        NSLog(@"%@",spending);
-    } else {
-        spending = [matches lastObject];
-    }
+    spending = [NSEntityDescription insertNewObjectForEntityForName:@"Spending" inManagedObjectContext:context];
+    spending.spend_id = [purchaseInfo valueForKey:PURCHASE_ID];
+    spending.name = [purchaseInfo valueForKey:PURCHASE_NAME];
+    spending.date = [purchaseInfo valueForKey:PURCHASE_DATE];
+    spending.amount = [purchaseInfo valueForKey:PURCHASE_AMOUNT];
+    //NSLog(@"%@",spending);
     
     return spending;
 }

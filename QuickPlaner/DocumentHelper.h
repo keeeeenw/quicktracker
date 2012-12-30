@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^completion_block_t)(UIManagedDocument *vacation);
+typedef void (^completion_block_t)(UIManagedDocument *document);
 
 @interface DocumentHelper : NSObject
 

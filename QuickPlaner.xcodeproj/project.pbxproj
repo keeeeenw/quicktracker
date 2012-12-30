@@ -20,6 +20,8 @@
 		5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
 		5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
 		5C118835168A9AC80016AF81 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C118834168A9AC80016AF81 /* CoreData.framework */; };
+		5C68B27B168AB04900BA661A /* QPHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */; };
+		5C68B27C168AB04900BA661A /* QPHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */; };
 		5CB411F3162BE0F900C89577 /* IMG_1247.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB411F2162BE0F900C89577 /* IMG_1247.jpg */; };
 		5CBBD133162B3EC0000D545B /* IMG_0202.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CBBD132162B3EC0000D545B /* IMG_0202.jpg */; };
 		5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
@@ -65,6 +67,8 @@
 		5C118828168A97B80016AF81 /* Spending+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spending+Budget.h"; sourceTree = "<group>"; };
 		5C118829168A97B80016AF81 /* Spending+Budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Spending+Budget.m"; sourceTree = "<group>"; };
 		5C118834168A9AC80016AF81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5C68B279168AB04900BA661A /* QPHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPHistoryTableViewController.h; sourceTree = "<group>"; };
+		5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPHistoryTableViewController.m; sourceTree = "<group>"; };
 		5CB411F2162BE0F900C89577 /* IMG_1247.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_1247.jpg; sourceTree = "<group>"; };
 		5CBBD132162B3EC0000D545B /* IMG_0202.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0202.jpg; sourceTree = "<group>"; };
 		5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +141,6 @@
 		5CCDFE4116212A2700FFE77D = {
 			isa = PBXGroup;
 			children = (
-				5C118834168A9AC80016AF81 /* CoreData.framework */,
 				5CCDFE5616212A2700FFE77D /* QuickPlaner */,
 				5CCDFE7D16212A2800FFE77D /* QuickPlanerTests */,
 				5CCDFE4F16212A2700FFE77D /* Frameworks */,
@@ -157,6 +160,7 @@
 		5CCDFE4F16212A2700FFE77D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C118834168A9AC80016AF81 /* CoreData.framework */,
 				5CCDFE5016212A2700FFE77D /* UIKit.framework */,
 				5CCDFE5216212A2700FFE77D /* Foundation.framework */,
 				5CCDFE5416212A2700FFE77D /* CoreGraphics.framework */,
@@ -170,6 +174,8 @@
 			children = (
 				5CCDFE6816212A2800FFE77D /* MainStoryboard_iPhone.storyboard */,
 				5CCDFE6B16212A2800FFE77D /* MainStoryboard_iPad.storyboard */,
+				5C68B279168AB04900BA661A /* QPHistoryTableViewController.h */,
+				5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */,
 				5CE1D42F16212B5900BE14BE /* QPViewController.h */,
 				5CE1D43016212B5900BE14BE /* QPViewController.m */,
 				5C11881B168A97280016AF81 /* DocumentHelper.h */,
@@ -342,6 +348,7 @@
 				5C11882E168A97B80016AF81 /* Spending.m in Sources */,
 				5C118830168A97B80016AF81 /* Saving+Budget.m in Sources */,
 				5C118832168A97B80016AF81 /* Spending+Budget.m in Sources */,
+				5C68B27B168AB04900BA661A /* QPHistoryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +363,7 @@
 				5C11882F168A97B80016AF81 /* Spending.m in Sources */,
 				5C118831168A97B80016AF81 /* Saving+Budget.m in Sources */,
 				5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */,
+				5C68B27C168AB04900BA661A /* QPHistoryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

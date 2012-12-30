@@ -11,21 +11,8 @@
 #import "Spending+Budget.h"
 #import "Saving+Budget.h"
 
-#define PURCHASE_ID @"purchase_id"
-#define PURCHASE_NAME @"purchase_name"
-#define PURCHASE_DATE @"purchase_date"
-#define PURCHASE_AMOUNT @"purchase_amount"
-
-#define SAVE_ID @"save_id"
-#define SAVE_DESCRIPTION @"save_description"
-#define SAVE_DATE @"save_date"
-#define SAVE_AMOUNT @"save_amount"
-
-#define SAVE @"Saving"
-#define SPEND @"Spending"
-#define MODE @"ApplicationMode"
-
 @interface QPViewController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
@@ -78,7 +65,7 @@
                                   [NSNumber numberWithDouble:[purchaseAmount doubleValue]], PURCHASE_AMOUNT,
                                   nil];
     
-    //Storing Information to Database in a seperate thread
+    //Storing Information to Database
     [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
         [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
@@ -87,6 +74,13 @@
                 [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
             } else{
                 NSLog(@"New Spending Data Saving Succeed");
+                [document closeWithCompletionHandler:^(BOOL success){
+                    if (success) {
+                        NSLog(@"Closing Existing Database Succeed");
+                    } else {
+                        NSLog(@"Closing Existing Database Not Succeed");
+                    }
+                }];
             }
         }];
     }];
@@ -136,11 +130,20 @@
                 [self updateSavingByAmount:-1*[saveAmount doubleValue]];
             } else{
                 NSLog(@"New Saving Data Saving Succeed");
+                [document closeWithCompletionHandler:^(BOOL success){
+                    if (success) {
+                        NSLog(@"Closing Existing Database Succeed");
+                    } else {
+                        NSLog(@"Closing Existing Database Not Succeed");
+                    }
+                }];
             }
         }];
     }];
+    if (sender) {
+        sender.hidden = NO;
+    }
     [self stopSpinner];
-    sender.hidden = NO;
 }
 
 - (void) updateSavingByAmount:(double) saveAmount{
@@ -248,6 +251,7 @@
     } else if([sender.titleLabel.text hasPrefix:@"-"]){
         NSString *subtractAmount = [sender.titleLabel.text substringFromIndex:1];
         sender.hidden = YES;
+        
         [self processPurchase:subtractAmount fromButton:sender];
     }
 }
