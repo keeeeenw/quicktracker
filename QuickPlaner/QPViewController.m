@@ -14,7 +14,7 @@
 @interface QPViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
-@property (weak, nonatomic) IBOutlet UITextField *purchaseTextField;
+@property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
 @property (nonatomic) bool appMode; //0 is spending, 1 is save
@@ -325,7 +325,12 @@
 #pragma mark - UITextFieldDelegate
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    [self processPurchase:self.purchaseTextField.text fromButton:nil];
+    if (self.appMode) {
+        [self processSaving:self.purchaseTextField.text fromButton:nil];
+    } else {
+        [self processPurchase:self.purchaseTextField.text fromButton:nil];
+    }
+    
     self.purchaseTextField.text = @"";
 }
 
