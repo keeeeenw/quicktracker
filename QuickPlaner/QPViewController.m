@@ -64,6 +64,7 @@
                                   date,PURCHASE_DATE,
                                   [NSNumber numberWithDouble:[purchaseAmount doubleValue]], PURCHASE_AMOUNT,
                                   nil];
+    sender.enabled = NO;
     
     //Storing Information to Database
     [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
@@ -74,21 +75,22 @@
                 [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
             } else{
                 NSLog(@"New Spending Data Saving Succeed");
-                [document closeWithCompletionHandler:^(BOOL success){
-                    if (success) {
-                        NSLog(@"Closing Existing Database Succeed");
-                    } else {
-                        NSLog(@"Closing Existing Database Not Succeed");
-                    }
-                }];
+//                [document closeWithCompletionHandler:^(BOOL success){
+//                    if (success) {
+//                        NSLog(@"Closing Existing Database Succeed");
+//                    } else {
+//                        NSLog(@"Closing Existing Database Not Succeed");
+//                    }
+//                }];
+                
+                if (sender) {
+                    sender.enabled = YES;
+                    //sender.hidden = NO;
+                }
+                [self stopSpinner];
             }
         }];
     }];
-    
-    if (sender) {
-        sender.hidden = NO;
-    }
-    [self stopSpinner];
 }
 
 - (void) updateSpendingByAmount:(double) purchaseAmount{
@@ -121,6 +123,7 @@
                               date,SAVE_DATE,
                               [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
                               nil];
+    sender.enabled = NO;
     
     [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
         [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
@@ -130,20 +133,21 @@
                 [self updateSavingByAmount:-1*[saveAmount doubleValue]];
             } else{
                 NSLog(@"New Saving Data Saving Succeed");
-                [document closeWithCompletionHandler:^(BOOL success){
-                    if (success) {
-                        NSLog(@"Closing Existing Database Succeed");
-                    } else {
-                        NSLog(@"Closing Existing Database Not Succeed");
-                    }
-                }];
+//                [document closeWithCompletionHandler:^(BOOL success){
+//                    if (success) {
+//                        NSLog(@"Closing Existing Database Succeed");
+//                    } else {
+//                        NSLog(@"Closing Existing Database Not Succeed");
+//                    }
+//                }];
+                if (sender) {
+                    sender.enabled = YES;
+                    //sender.hidden = NO;
+                }
+                [self stopSpinner];
             }
         }];
     }];
-    if (sender) {
-        sender.hidden = NO;
-    }
-    [self stopSpinner];
 }
 
 - (void) updateSavingByAmount:(double) saveAmount{
@@ -190,7 +194,10 @@
         spending = [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
     }
     
-    double total = saving - spending;
+    //NSLog(@"Saving is %.2f", saving);
+    //NSLog(@"Spending is %.2f", spending);
+    
+    double total = saving + spending;
     
     [UIView animateWithDuration:1 animations:^{
         self.moneyRemainedLabel.alpha = 1;
@@ -245,12 +252,12 @@
 - (IBAction)quickAddPressed:(UIButton *)sender {
     if ([sender.titleLabel.text hasPrefix:@"+"]) {
         NSString *addAmount = [sender.titleLabel.text substringFromIndex:1];
-        sender.hidden = YES;
+        //sender.hidden = YES;
         [self processSaving:addAmount
                  fromButton:sender];
     } else if([sender.titleLabel.text hasPrefix:@"-"]){
         NSString *subtractAmount = [sender.titleLabel.text substringFromIndex:1];
-        sender.hidden = YES;
+        //sender.hidden = YES;
         
         [self processPurchase:subtractAmount fromButton:sender];
     }
@@ -293,9 +300,9 @@
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated 
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
 	// Do any additional setup after loading the view, typically from a nib.
     
     //Setting up self.purchaseTextField
@@ -328,12 +335,18 @@
         [self.modeSwitch setSelectedSegmentIndex:0];
     }
     
+    //Attempt to Open CoreData Database to spend up the process
+    [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){}];
+    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){}];
+    
     //Setting up title
     self.navigationItem.title = self.title;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
+    [DocumentHelper closeDocument:SAVE usingBlock:nil];
+    [DocumentHelper closeDocument:SPEND usingBlock:nil];
     [super viewWillDisappear:animated];
 }
 

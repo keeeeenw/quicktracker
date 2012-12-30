@@ -27,8 +27,13 @@
           usingBlock:(completion_block_t)completionBlock{
     NSURL *fileURL = [self documentFileURL:name];
     static UIManagedDocument *database = nil;
+    
     database = [[UIManagedDocument alloc]initWithFileURL:fileURL];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[database.fileURL path]]) {
+    
+    if (database.documentState == UIDocumentStateNormal){
+        //Already opened
+        completionBlock(database);
+    } else if (![[NSFileManager defaultManager] fileExistsAtPath:[database.fileURL path]]) {
         //Create a new database on disk
         [database saveToURL:database.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
             if (success) {
@@ -48,14 +53,38 @@
                 NSLog(@"Opening Exisiting Database Not Succeed");
             }
         }];
-    } else if (database.documentState == UIDocumentStateNormal){
+    } 
+}
+
++ (void)closeDocument:(NSString *)name
+           usingBlock:(completion_block_t)completionBlock{
+    NSURL *fileURL = [self documentFileURL:name];
+    static UIManagedDocument *database = nil;
+    
+    database = [[UIManagedDocument alloc]initWithFileURL:fileURL];
+    
+    if (database.documentState == UIDocumentStateNormal){
         //Already opened
-        completionBlock(database);
+        [database closeWithCompletionHandler:^(BOOL success){
+            if (success) {
+                NSLog(@"Closing %@ Database Succeed",name);
+            } else {
+                NSLog(@"Closing %@ Database Failed", name);
+            }
+        }];
+    } else if (![[NSFileManager defaultManager] fileExistsAtPath:[database.fileURL path]]) {
+        NSLog(@"Database %@ Does not Exist", name);
+    } else if (database.documentState == UIDocumentStateClosed){
+        NSLog(@"Database %@ Already Closed", name);
     }
 }
 
 + (void)removeDocument:(NSString *)name {
     NSLog(@"Deleting %@", name);
+    static UIManagedDocument *database = nil;
+    if (database) {
+        database = nil;
+    }
     NSURL *fileURL = [self documentFileURL:name];
     [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
 }

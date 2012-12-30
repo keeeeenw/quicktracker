@@ -17,5 +17,8 @@ typedef void (^completion_block_t)(UIManagedDocument *document);
 + (void)openDocument:(NSString *)name
           usingBlock:(completion_block_t)completionBlock;
 
++ (void)closeDocument:(NSString *)name
+           usingBlock:(completion_block_t)completionBlock;
+
 + (void)removeDocument:(NSString *)name;
 @end

@@ -20,6 +20,24 @@
 
 @implementation QPHistoryTableViewController
 
+#pragma mark - Helper Methods
+
+- (void)startSpinner:(NSString *)activity
+{
+    self.navigationItem.title = activity;
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:spinner];
+}
+
+- (void)stopSpinner
+{
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.title = self.title;
+}
+
+#pragma mark - Controller Logics
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -55,6 +73,8 @@
         NSLog(@"Total Saving %f",totalSaving);
         self.savingCell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",totalSaving];
         
+        [self startSpinner:@"Loading..."];
+        
         [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
             double totalSpending = [[Spending totalSpendingInManagedObjectContext:document.managedObjectContext] doubleValue];
             self.spendingCell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",totalSpending];
@@ -63,6 +83,8 @@
             
             self.totalCell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",currentValue];
             NSLog(@"Current Value %f", currentValue);
+            
+            [self stopSpinner];
             
         }];
         
