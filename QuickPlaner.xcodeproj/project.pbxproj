@@ -102,7 +102,7 @@
 		5C799A4416905C69004C6407 /* enter_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enter_button@2x.png"; sourceTree = "<group>"; };
 		5CB411F2162BE0F900C89577 /* IMG_1247.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_1247.jpg; sourceTree = "<group>"; };
 		5CBBD132162B3EC0000D545B /* IMG_0202.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0202.jpg; sourceTree = "<group>"; };
-		5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CCDFE4C16212A2700FFE77D /* QuickPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCDFE5016212A2700FFE77D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5CCDFE5216212A2700FFE77D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5CCDFE5416212A2700FFE77D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -179,7 +179,7 @@
 		5CCDFE4D16212A2700FFE77D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */,
+				5CCDFE4C16212A2700FFE77D /* QuickPlanner.app */,
 				5CCDFE7616212A2800FFE77D /* QuickPlanerTests.octest */,
 			);
 			name = Products;
@@ -281,7 +281,7 @@
 			);
 			name = QuickPlaner;
 			productName = QuickPlaner;
-			productReference = 5CCDFE4C16212A2700FFE77D /* QuickPlaner.app */;
+			productReference = 5CCDFE4C16212A2700FFE77D /* QuickPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5CCDFE7516212A2800FFE77D /* QuickPlanerTests */ = {
@@ -492,6 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = QuickPlanner;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -514,6 +515,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = QuickPlanner;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -527,7 +529,7 @@
 				GCC_PREFIX_HEADER = "QuickPlaner/QuickPlaner-Prefix.pch";
 				INFOPLIST_FILE = "QuickPlaner/QuickPlaner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuickPlanner;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -540,7 +542,7 @@
 				GCC_PREFIX_HEADER = "QuickPlaner/QuickPlaner-Prefix.pch";
 				INFOPLIST_FILE = "QuickPlaner/QuickPlaner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuickPlanner;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

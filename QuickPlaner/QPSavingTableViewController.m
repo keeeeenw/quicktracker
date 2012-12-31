@@ -66,7 +66,7 @@
     } else {
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:save.date];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d", [components hour],[components minute]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%02d:%02d", [components hour],[components minute]];
     }
     
     return cell;
