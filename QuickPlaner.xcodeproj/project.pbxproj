@@ -155,9 +155,9 @@
 			children = (
 				5C118821168A97B80016AF81 /* MBPModel.xcdatamodel */,
 				5C799A2616903236004C6407 /* Saving.h */,
+				5C799A2716903236004C6407 /* Saving.m */,
 				5C799A2A16903236004C6407 /* Spending.h */,
 				5C799A2B16903236004C6407 /* Spending.m */,
-				5C799A2716903236004C6407 /* Saving.m */,
 				5C118826168A97B80016AF81 /* Saving+Budget.h */,
 				5C118827168A97B80016AF81 /* Saving+Budget.m */,
 				5C118828168A97B80016AF81 /* Spending+Budget.h */,
@@ -530,7 +530,7 @@
 				INFOPLIST_FILE = "QuickPlaner/QuickPlaner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = QuickPlanner;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -543,7 +543,7 @@
 				INFOPLIST_FILE = "QuickPlaner/QuickPlaner-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = QuickPlanner;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

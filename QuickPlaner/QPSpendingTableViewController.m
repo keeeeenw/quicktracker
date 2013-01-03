@@ -13,6 +13,8 @@
 
 @interface QPSpendingTableViewController ()
 
+@property (nonatomic, strong) UIManagedDocument *spendingDocument;
+
 @end
 
 @implementation QPSpendingTableViewController
@@ -46,6 +48,7 @@
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
+        self.spendingDocument = document;
         self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:document.managedObjectContext sectionNameKeyPath:@"section_id" cacheName:nil];
     }];
 }
@@ -99,6 +102,24 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
     return nil; //this hide the section index
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.spendingDocument.documentState == UIDocumentStateEditingDisabled) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!(self.spendingDocument.documentState == UIDocumentStateEditingDisabled)) {
+        double userDefaultSpending = [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
+        Spending *spend = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [[NSUserDefaults standardUserDefaults] setDouble:userDefaultSpending+[spend.amount doubleValue] forKey:SPEND];
+        [self.fetchedResultsController.managedObjectContext deleteObject:spend];
+    } 
 }
 
 @end

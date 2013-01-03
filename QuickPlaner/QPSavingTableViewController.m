@@ -13,6 +13,8 @@
 
 @interface QPSavingTableViewController ()
 
+@property (nonatomic, strong) UIManagedDocument *savingDocument;
+
 @end
 
 @implementation QPSavingTableViewController
@@ -99,6 +101,24 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
     return nil; //this hide the section index
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.savingDocument.documentState == UIDocumentStateEditingDisabled) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!(self.savingDocument.documentState == UIDocumentStateEditingDisabled)) {
+        double userDefaultSpending = [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue];
+        Saving *save = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [[NSUserDefaults standardUserDefaults] setDouble:userDefaultSpending-[save.amount doubleValue] forKey:SAVE];
+        [self.fetchedResultsController.managedObjectContext deleteObject:save];
+    }
 }
 
 

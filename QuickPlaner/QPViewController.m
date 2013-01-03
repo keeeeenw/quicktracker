@@ -236,7 +236,7 @@
     //NSLog(@"Saving is %.2f", saving);
     //NSLog(@"Spending is %.2f", spending);
     
-    double total = saving + spending;
+    double total = saving + spending; //noted spending is negative
     
     [UIView animateWithDuration:1 animations:^{
         self.moneyRemainedLabel.alpha = 1;
@@ -354,8 +354,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
-    [DocumentHelper closeDocument:SAVE usingBlock:nil];
-    [DocumentHelper closeDocument:SPEND usingBlock:nil];
+//    [DocumentHelper closeDocument:SAVE usingBlock:nil];
+//    [DocumentHelper closeDocument:SPEND usingBlock:nil];
     [super viewWillDisappear:animated];
 }
 
