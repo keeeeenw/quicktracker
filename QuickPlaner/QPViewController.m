@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
-@property (nonatomic) bool appMode; //0 is spending, 1 is save
+@property (nonatomic) BOOL appMode; //0 is spending, 1 is save
 
 @end
 
@@ -51,7 +51,7 @@
     if (![[NSUserDefaults standardUserDefaults] objectForKey:MODE]){
         [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
     } else {
-        self.appMode = [[NSUserDefaults standardUserDefaults] objectForKey:MODE];
+        self.appMode = [[NSUserDefaults standardUserDefaults] boolForKey:MODE];
     }
     
     if (self.appMode) { //This means app is using Saving Mode
@@ -305,15 +305,16 @@
 - (IBAction)modeSwitchValueChanged:(UISegmentedControl *)sender {
     int index = [sender selectedSegmentIndex];
     if (index == 0) {
-        self.appMode = false; //Spending
+        self.appMode = NO; //Spending
         [self updateQuickAddButtonsUsingSign:@"-"];
     } else {
-        self.appMode = true; //Saving
+        self.appMode = YES; //Saving
         [self updateQuickAddButtonsUsingSign:@"+"];
     }
     [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
     
 }
+
 - (IBAction)resetPressed:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
@@ -348,7 +349,6 @@
 {
     [super viewWillAppear:animated];
 	// Do any additional setup after loading the view, typically from a nib.
-    
     [self setup];
 }
 
