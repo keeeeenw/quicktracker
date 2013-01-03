@@ -11,13 +11,14 @@
 #import "Spending+Budget.h"
 #import "Saving+Budget.h"
 
-@interface QPViewController () <UITextFieldDelegate>
+@interface QPViewController () <UITextFieldDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
 @property (nonatomic) BOOL appMode; //0 is spending, 1 is save
+@property (strong, nonatomic) UIAlertView *alertView;
 
 @end
 
@@ -29,12 +30,25 @@
 @synthesize modeSwitch = _modeSwitch;
 @synthesize appMode = _appMode;
 
+#pragma Setup Properties
+-(UIAlertView *) alertView{
+    if (!_alertView) {
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if ([language isEqualToString:@"zh-Hans"]) {
+            NSString *cnMsg = @"亲，你是否想要清除你的储蓄和消费数据？";
+            _alertView = [[UIAlertView alloc] initWithTitle:@"请稍等!" message:cnMsg delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+        } else {
+            NSString *enMsg = @"Do you want to clear all of your spending and saving data?";
+            _alertView = [[UIAlertView alloc] initWithTitle:@"Wait!" message:enMsg delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        }
+    }
+    return _alertView;
+}
+
+
 #pragma mark - Helper Methods
 
 -(void)setup{
-    //Setting up self.purchaseTextField
-    self.purchaseTextField.delegate = self;
-    self.purchaseTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
     //Adding CurrencyLabel to self.purchaseTextField
     UILabel *currencyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -316,11 +330,19 @@
 }
 
 - (IBAction)resetPressed:(UIButton *)sender {
-    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
-    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
-    [DocumentHelper removeDocument:SAVE];
-    [DocumentHelper removeDocument:SPEND];
-    [self setup];
+    [self.alertView show];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
+        [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
+        [DocumentHelper removeDocument:SAVE];
+        [DocumentHelper removeDocument:SPEND];
+        [self setup];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -345,8 +367,18 @@
 }
 
 #pragma mark - View Controller Life Cycle
-- (void)viewWillAppear:(BOOL)animated 
-{
+
+- (void)viewDidLoad{
+    //Setup Delegate
+    //Setting up self.purchaseTextField
+    self.purchaseTextField.delegate = self;
+    self.purchaseTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    
+    //Setting up UIActionSheetDelegate
+    self.alertView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	// Do any additional setup after loading the view, typically from a nib.
     [self setup];
