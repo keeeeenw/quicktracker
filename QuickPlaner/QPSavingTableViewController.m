@@ -94,7 +94,7 @@
     NSInteger month = (numericSection - (year*10000)) / 100;
 	NSInteger day = numericSection - (year * 10000 + month*100);
 	
-	NSString *titleString = [NSString stringWithFormat:@"%@, %d %d", [monthSymbols objectAtIndex:month-1], day, year];
+	NSString *titleString = [NSString stringWithFormat:@"%@ %d %d", [monthSymbols objectAtIndex:month-1], day, year];
 	
 	return titleString;
 }
