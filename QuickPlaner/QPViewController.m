@@ -128,14 +128,6 @@
                 [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
             } else{
                 NSLog(@"New Spending Data Saving Succeed");
-//                [document closeWithCompletionHandler:^(BOOL success){
-//                    if (success) {
-//                        NSLog(@"Closing Existing Database Succeed");
-//                    } else {
-//                        NSLog(@"Closing Existing Database Not Succeed");
-//                    }
-//                }];
-                
                 if (sender) {
                     sender.enabled = YES;
                     //sender.hidden = NO;
@@ -186,13 +178,6 @@
                 [self updateSavingByAmount:-1*[saveAmount doubleValue]];
             } else{
                 NSLog(@"New Saving Data Saving Succeed");
-//                [document closeWithCompletionHandler:^(BOOL success){
-//                    if (success) {
-//                        NSLog(@"Closing Existing Database Succeed");
-//                    } else {
-//                        NSLog(@"Closing Existing Database Not Succeed");
-//                    }
-//                }];
                 if (sender) {
                     sender.enabled = YES;
                     //sender.hidden = NO;

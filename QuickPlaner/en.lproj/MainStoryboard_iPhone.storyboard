@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--View Controller - My Quick Planner-->
+        <!--View Controller - My Quick Tracker-->
         <scene sceneID="8wv-P5-Wf9">
             <objects>
-                <viewController title="My Quick Planner" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
+                <viewController title="My Quick Tracker" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxz-qu-c4d">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -96,6 +96,11 @@
 	NSInteger day = numericSection - (year * 10000 + month*100);
 	
 	NSString *titleString = [NSString stringWithFormat:@"%@ %d %d", [monthSymbols objectAtIndex:month-1], day, year];
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([language isEqualToString:@"zh-Hans"]){
+       	titleString = [NSString stringWithFormat:@"%d年%@%d日", year,[monthSymbols objectAtIndex:month-1], day];
+    }
 	
 	return titleString;
 }
