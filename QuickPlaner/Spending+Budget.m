@@ -68,7 +68,7 @@
     
     if (matches != nil) {
         for (Spending *spend in matches) {
-            NSLog(@"Spending Amount %@",spend.amount);
+            //NSLog(@"Spending Amount %@",spend.amount);
             totalSpending = [NSNumber numberWithDouble:([totalSpending doubleValue] + [spend.amount doubleValue])];
         }
     }    

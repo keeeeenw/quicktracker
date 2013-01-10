@@ -122,19 +122,6 @@
     //Storing Information to Database
     [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
         [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
-//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-//            if (!success) { //if not success rollback the updates on NSUserDefault 
-//                NSLog(@"New Spending Data Saving Failed");
-//                [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
-//            } else{
-//                NSLog(@"New Spending Data Saving Succeed");
-//                if (sender) {
-//                    sender.enabled = YES;
-//                    //sender.hidden = NO;
-//                }
-//                [self stopSpinner];
-//            }
-//        }];
         sender.enabled = YES;
         [self stopSpinner];
     }];
@@ -174,19 +161,6 @@
     
     [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
         [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
-//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-//            if (!success) { //if not success rollback the updates on NSUserDefault
-//                NSLog(@"New Saving Data Saving Failed");
-//                [self updateSavingByAmount:-1*[saveAmount doubleValue]];
-//            } else{
-//                NSLog(@"New Saving Data Saving Succeed");
-//                if (sender) {
-//                    sender.enabled = YES;
-//                    //sender.hidden = NO;
-//                }
-//                [self stopSpinner];
-//            }
-//        }];
         sender.enabled = YES;
         [self stopSpinner];
     }];
@@ -219,9 +193,10 @@
     //This will be changed to 1 via View Animation
     self.moneyRemainedLabel.alpha = 0;
     
-    double saving;
-    double spending;
+    __block double saving;
+    __block double spending;
     
+    //Create saving/spending keys in NSUserDefaults if they do not exit
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue]) {
         saving = 0;
         [[NSUserDefaults standardUserDefaults] setDouble:0.0 forKey:SAVE];
@@ -236,14 +211,40 @@
         spending = [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
     }
     
-    //NSLog(@"Saving is %.2f", saving);
-    //NSLog(@"Spending is %.2f", spending);
+    //Check whether the data in NSUserDefaults is in conflict with the data in CoreData
+    //If there is a conflict, resolve it by using the data in CoreData
     
-    double total = saving + spending; //noted spending is negative
-    
-    [UIView animateWithDuration:1 animations:^{
-        self.moneyRemainedLabel.alpha = 1;
-        self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
+        __block double coreDataSpending = [[Spending totalSpendingInManagedObjectContext:document.managedObjectContext] doubleValue];
+            
+        [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
+            double coreDataSaving = [[Saving totalSavingInManagedObjectContext:document.managedObjectContext] doubleValue];
+            
+            NSLog(@"Saving is %.2f", saving);
+            NSLog(@"Spending is %.2f", spending);
+            NSLog(@"coreDataSaving is %.2f", coreDataSaving);
+            NSLog(@"coreDataSaving is %.2f", coreDataSpending);
+
+            
+            if (coreDataSaving != saving) {
+                NSLog(@"Saving Data is in conflict");
+                saving = coreDataSaving;
+                [[NSUserDefaults standardUserDefaults] setDouble:saving forKey:SAVE];
+            }
+            
+            if (-1*coreDataSpending != spending){
+                NSLog(@"Spending Data is in conflict");
+                spending = -1*coreDataSpending;
+                [[NSUserDefaults standardUserDefaults] setDouble:spending forKey:SPEND];
+            }
+            
+            double total = saving + spending; //noted spending is negative
+            
+            [UIView animateWithDuration:1 animations:^{
+                self.moneyRemainedLabel.alpha = 1;
+                self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+            }];
+        }];
     }];
     
 }

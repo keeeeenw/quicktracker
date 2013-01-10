@@ -57,9 +57,9 @@
 +(NSNumber *) totalSavingInManagedObjectContext:(NSManagedObjectContext *)context{
     NSNumber *totalSaving = [NSNumber numberWithDouble:0.0];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Saving"];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"save_id like '*'"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"save_id like '*'"];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"describe" ascending:YES];
-//    request.predicate = predicate;
+    request.predicate = predicate;
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSArray *matches = [context executeFetchRequest:request error:nil];
