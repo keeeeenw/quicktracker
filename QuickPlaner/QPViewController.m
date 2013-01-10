@@ -1,6 +1,6 @@
 //
-//  MBPViewController.m
-//  My Budget Planner
+//  QPViewController.m
+//  QuickTracker
 //
 //  Created by Zixiao on 12-8-8.
 //  Copyright (c) 2012年 Zixiao Wang. All rights reserved.
@@ -117,24 +117,26 @@
                                   date,PURCHASE_DATE,
                                   [NSNumber numberWithDouble:[purchaseAmount doubleValue]], PURCHASE_AMOUNT,
                                   nil];
-    sender.enabled = NO;
+    //sender.enabled = NO;
     
     //Storing Information to Database
     [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
         [Spending spendingWithPurchaseInfo:purchaseInfo inManagedObjectContext:document.managedObjectContext];
-        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-            if (!success) { //if not success rollback the updates on NSUserDefault 
-                NSLog(@"New Spending Data Saving Failed");
-                [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
-            } else{
-                NSLog(@"New Spending Data Saving Succeed");
-                if (sender) {
-                    sender.enabled = YES;
-                    //sender.hidden = NO;
-                }
-                [self stopSpinner];
-            }
-        }];
+//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+//            if (!success) { //if not success rollback the updates on NSUserDefault 
+//                NSLog(@"New Spending Data Saving Failed");
+//                [self updateSpendingByAmount:-1*[purchaseAmount doubleValue]];
+//            } else{
+//                NSLog(@"New Spending Data Saving Succeed");
+//                if (sender) {
+//                    sender.enabled = YES;
+//                    //sender.hidden = NO;
+//                }
+//                [self stopSpinner];
+//            }
+//        }];
+        sender.enabled = YES;
+        [self stopSpinner];
     }];
 }
 
@@ -168,23 +170,25 @@
                               date,SAVE_DATE,
                               [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
                               nil];
-    sender.enabled = NO;
+    //sender.enabled = NO;
     
     [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
         [Saving savingWithSaveInfo:saveInfo inManagedObjectContext:document.managedObjectContext];
-        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-            if (!success) { //if not success rollback the updates on NSUserDefault
-                NSLog(@"New Saving Data Saving Failed");
-                [self updateSavingByAmount:-1*[saveAmount doubleValue]];
-            } else{
-                NSLog(@"New Saving Data Saving Succeed");
-                if (sender) {
-                    sender.enabled = YES;
-                    //sender.hidden = NO;
-                }
-                [self stopSpinner];
-            }
-        }];
+//        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+//            if (!success) { //if not success rollback the updates on NSUserDefault
+//                NSLog(@"New Saving Data Saving Failed");
+//                [self updateSavingByAmount:-1*[saveAmount doubleValue]];
+//            } else{
+//                NSLog(@"New Saving Data Saving Succeed");
+//                if (sender) {
+//                    sender.enabled = YES;
+//                    //sender.hidden = NO;
+//                }
+//                [self stopSpinner];
+//            }
+//        }];
+        sender.enabled = YES;
+        [self stopSpinner];
     }];
 }
 
@@ -371,6 +375,28 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
+    [self startSpinner:@"Saving Data"];
+    [DocumentHelper openDocument:SPEND usingBlock:^(UIManagedDocument *document){
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            if (!success) { //if not success rollback the updates on NSUserDefault
+                NSLog(@"New Spending Data Saving Failed");
+            } else{
+                NSLog(@"New Spending Data Saving Succeed");
+            }
+        }];
+        [self stopSpinner];
+    }];
+    [self startSpinner:@"Saving Data"];
+    [DocumentHelper openDocument:SAVE usingBlock:^(UIManagedDocument *document){
+        [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            if (!success) { //if not success rollback the updates on NSUserDefault
+                NSLog(@"New Saving Data Saving Failed");
+            } else{
+                NSLog(@"New Saving Data Saving Succeed");
+            }
+        }];
+        [self stopSpinner];
+    }];
 //    [DocumentHelper closeDocument:SAVE usingBlock:nil];
 //    [DocumentHelper closeDocument:SPEND usingBlock:nil];
     [super viewWillDisappear:animated];

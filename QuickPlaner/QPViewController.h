@@ -1,6 +1,6 @@
 //
-//  MBPViewController.h
-//  My Budget Planner
+//  QPViewController.h
+//  QucikTracker
 //
 //  Created by Zixiao on 12-8-8.
 //  Copyright (c) 2012年 Zixiao Wang. All rights reserved.

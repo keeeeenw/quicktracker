@@ -80,6 +80,7 @@
 		5C118828168A97B80016AF81 /* Spending+Budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spending+Budget.h"; sourceTree = "<group>"; };
 		5C118829168A97B80016AF81 /* Spending+Budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Spending+Budget.m"; sourceTree = "<group>"; };
 		5C118834168A9AC80016AF81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5C377255169EA7260098FEBC /* QuickPlaner copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "QuickPlaner copy-Info.plist"; path = "/Users/zixiao/Dropbox/xcode developer/Personal Projects/QuickPlaner/QuickPlaner copy-Info.plist"; sourceTree = "<absolute>"; };
 		5C572A731691303D006D1A17 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "../logo@2x.png"; sourceTree = "<group>"; };
 		5C572A7616913043006D1A17 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../logo.png; sourceTree = "<group>"; };
 		5C572A7816913259006D1A17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -164,13 +165,22 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		5C377254169EA7260098FEBC /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 		5CCDFE4116212A2700FFE77D = {
 			isa = PBXGroup;
 			children = (
+				5C377254169EA7260098FEBC /* Resources-iPad */,
 				5CCDFE5616212A2700FFE77D /* QuickPlaner */,
 				5CCDFE7D16212A2800FFE77D /* QuickPlanerTests */,
 				5CCDFE4F16212A2700FFE77D /* Frameworks */,
 				5CCDFE4D16212A2700FFE77D /* Products */,
+				5C377255169EA7260098FEBC /* QuickPlaner copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

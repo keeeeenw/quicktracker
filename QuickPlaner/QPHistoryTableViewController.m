@@ -1,6 +1,6 @@
 //
 //  QPHistoryTableViewController.m
-//  QuickPlaner
+//  QucikTracker
 //
 //  Created by Zixiao on 12/26/12.
 //  Copyright (c) 2012 Zixiao Wang. All rights reserved.
