@@ -165,17 +165,9 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		5C377254169EA7260098FEBC /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Resources-iPad";
-			sourceTree = "<group>";
-		};
 		5CCDFE4116212A2700FFE77D = {
 			isa = PBXGroup;
 			children = (
-				5C377254169EA7260098FEBC /* Resources-iPad */,
 				5CCDFE5616212A2700FFE77D /* QuickPlaner */,
 				5CCDFE7D16212A2800FFE77D /* QuickPlanerTests */,
 				5CCDFE4F16212A2700FFE77D /* Frameworks */,
