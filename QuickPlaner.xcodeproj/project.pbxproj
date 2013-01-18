@@ -55,6 +55,7 @@
 		5CCDFE8216212A2800FFE77D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDFE8016212A2800FFE77D /* InfoPlist.strings */; };
 		5CCDFE8516212A2800FFE77D /* QuickPlanerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDFE8416212A2800FFE77D /* QuickPlanerTests.m */; };
 		5CE1D43116212B5900BE14BE /* QPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE1D43016212B5900BE14BE /* QPViewController.m */; };
+		5CEA599016A88B2800E732D2 /* QPSavingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA598F16A88B2800E732D2 /* QPSavingDetailTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		5CCDFE8416212A2800FFE77D /* QuickPlanerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickPlanerTests.m; sourceTree = "<group>"; };
 		5CE1D42F16212B5900BE14BE /* QPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPViewController.h; sourceTree = "<group>"; };
 		5CE1D43016212B5900BE14BE /* QPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPViewController.m; sourceTree = "<group>"; };
+		5CEA598E16A88B2800E732D2 /* QPSavingDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPSavingDetailTableViewController.h; sourceTree = "<group>"; };
+		5CEA598F16A88B2800E732D2 /* QPSavingDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPSavingDetailTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +213,8 @@
 				5C799A17169013AB004C6407 /* QPSavingTableViewController.m */,
 				5C799A1A169013CE004C6407 /* QPSpendingTableViewController.h */,
 				5C799A1B169013CE004C6407 /* QPSpendingTableViewController.m */,
+				5CEA598E16A88B2800E732D2 /* QPSavingDetailTableViewController.h */,
+				5CEA598F16A88B2800E732D2 /* QPSavingDetailTableViewController.m */,
 				5C118820168A97A60016AF81 /* CoreData */,
 				5CCDFE5716212A2700FFE77D /* Supporting Files */,
 			);
@@ -397,6 +402,7 @@
 				5C799A1C169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
 				5C799A2816903236004C6407 /* Saving.m in Sources */,
 				5C799A2C16903236004C6407 /* Spending.m in Sources */,
+				5CEA599016A88B2800E732D2 /* QPSavingDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

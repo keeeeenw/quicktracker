@@ -10,6 +10,7 @@
 #import "QPViewController.h"
 #import "DocumentHelper.h"
 #import "Saving+Budget.h"
+#import "QPSavingDetailTableViewController.h"
 
 @interface QPSavingTableViewController ()
 
@@ -127,5 +128,14 @@
     }
 }
 
+#pragma mark - Sigue Operation
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //The second part of the "or" operation is used by segue for FlickrRecentPhotoViewController
+    if ([segue.identifier isEqualToString:@"Saving Detail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        [segue.destinationViewController setSave:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    }
+}
 
 @end
