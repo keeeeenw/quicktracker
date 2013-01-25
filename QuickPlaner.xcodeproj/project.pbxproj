@@ -41,6 +41,8 @@
 		5C799A4616905C69004C6407 /* enter_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C799A4316905C69004C6407 /* enter_button.png */; };
 		5C799A4716905C69004C6407 /* enter_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C799A4416905C69004C6407 /* enter_button@2x.png */; };
 		5C799A4816905C69004C6407 /* enter_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C799A4416905C69004C6407 /* enter_button@2x.png */; };
+		5C7BBB1D16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BBB1C16B3366500A5F106 /* QPSpendingDetailTableViewController.m */; };
+		5C7BBB1E16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BBB1C16B3366500A5F106 /* QPSpendingDetailTableViewController.m */; };
 		5CCDFE5116212A2700FFE77D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5016212A2700FFE77D /* UIKit.framework */; };
 		5CCDFE5316212A2700FFE77D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5216212A2700FFE77D /* Foundation.framework */; };
 		5CCDFE5516212A2700FFE77D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCDFE5416212A2700FFE77D /* CoreGraphics.framework */; };
@@ -103,6 +105,8 @@
 		5C799A3E16905ABE004C6407 /* digit_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "digit_button@2x.png"; sourceTree = "<group>"; };
 		5C799A4316905C69004C6407 /* enter_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enter_button.png; sourceTree = "<group>"; };
 		5C799A4416905C69004C6407 /* enter_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enter_button@2x.png"; sourceTree = "<group>"; };
+		5C7BBB1B16B3366500A5F106 /* QPSpendingDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QPSpendingDetailTableViewController.h; path = ../QPSpendingDetailTableViewController.h; sourceTree = "<group>"; };
+		5C7BBB1C16B3366500A5F106 /* QPSpendingDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QPSpendingDetailTableViewController.m; path = ../QPSpendingDetailTableViewController.m; sourceTree = "<group>"; };
 		5CCDFE4C16212A2700FFE77D /* QuickTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCDFE5016212A2700FFE77D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5CCDFE5216212A2700FFE77D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -215,6 +219,8 @@
 				5C799A1B169013CE004C6407 /* QPSpendingTableViewController.m */,
 				5CEA598E16A88B2800E732D2 /* QPSavingDetailTableViewController.h */,
 				5CEA598F16A88B2800E732D2 /* QPSavingDetailTableViewController.m */,
+				5C7BBB1B16B3366500A5F106 /* QPSpendingDetailTableViewController.h */,
+				5C7BBB1C16B3366500A5F106 /* QPSpendingDetailTableViewController.m */,
 				5C118820168A97A60016AF81 /* CoreData */,
 				5CCDFE5716212A2700FFE77D /* Supporting Files */,
 			);
@@ -403,6 +409,7 @@
 				5C799A2816903236004C6407 /* Saving.m in Sources */,
 				5C799A2C16903236004C6407 /* Spending.m in Sources */,
 				5CEA599016A88B2800E732D2 /* QPSavingDetailTableViewController.m in Sources */,
+				5C7BBB1D16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +428,7 @@
 				5C799A1D169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
 				5C799A2916903236004C6407 /* Saving.m in Sources */,
 				5C799A2D16903236004C6407 /* Spending.m in Sources */,
+				5C7BBB1E16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

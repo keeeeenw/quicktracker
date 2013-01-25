@@ -82,6 +82,13 @@
     
     //Setting up title
     self.navigationItem.title = self.title;
+    
+    //Make the keyboard disappear when the user touches outside of the textfield
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)startSpinner:(NSString *)activity
@@ -316,11 +323,14 @@
         [self updateQuickAddButtonsUsingSign:@"+"];
     }
     [[NSUserDefaults standardUserDefaults] setBool:self.appMode forKey:MODE];
-    
 }
 
 - (IBAction)resetPressed:(UIButton *)sender {
     [self.alertView show];
+}
+
+-(void)dismissKeyboard {
+    [self.purchaseTextField resignFirstResponder];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -338,13 +348,15 @@
 #pragma mark - UITextFieldDelegate
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    if (self.appMode) {
-        [self processSaving:self.purchaseTextField.text fromButton:nil];
-    } else {
-        [self processPurchase:self.purchaseTextField.text fromButton:nil];
+    if (![textField.text isEqual:@""]) {
+        if (self.appMode) {
+            [self processSaving:self.purchaseTextField.text fromButton:nil];
+        } else {
+            [self processPurchase:self.purchaseTextField.text fromButton:nil];
+        }
+        
+        self.purchaseTextField.text = @"";
     }
-    
-    self.purchaseTextField.text = @"";
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

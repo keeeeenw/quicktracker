@@ -1,14 +1,14 @@
 //
-//  QPSavingDetailViewController.m
+//  QPSpendingDetailTableViewController.m
 //  QuickPlaner
 //
-//  Created by Zixiao on 1/18/13.
+//  Created by Zixiao on 1/25/13.
 //  Copyright (c) 2013 Zixiao Wang. All rights reserved.
 //
 
-#import "QPSavingDetailTableViewController.h"
+#import "QPSpendingDetailTableViewController.h"
 
-@interface QPSavingDetailTableViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface QPSpendingDetailTableViewController () <UITextViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *amountText;
 @property (weak, nonatomic) IBOutlet UITextField *dateText;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation QPSavingDetailTableViewController
+@implementation QPSpendingDetailTableViewController
 
 #pragma mark - Sync Models and Views
 
@@ -78,14 +78,14 @@
     self.amountText.leftView = currencyLabel;
     self.amountText.leftViewMode = UITextFieldViewModeAlways;
     
-    //self.amountText.text = [self.save.amount stringValue];
-    self.amountText.text = [NSString stringWithFormat:@"%.2f", [self.save.amount doubleValue]];
-    self.dateText.text = [self processDate:self.save.date];
-    self.noteText.text = self.save.describe;
+    //self.amountText.text = [self.spend.amount stringValue];
+    self.amountText.text = [NSString stringWithFormat:@"%.2f", [self.spend.amount doubleValue]];
+    self.dateText.text = [self processDate:self.spend.date];
+    self.noteText.text = self.spend.name;
     
     self.dateText.inputView = self.datePicker;
-    self.datePicker.date = self.save.date;
-
+    self.datePicker.date = self.spend.date;
+    
 }
 
 - (NSString *)processDate:(NSDate *) date{
@@ -103,12 +103,12 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField isEqual:self.amountText]) {
-        if ([self.amountText.text doubleValue] != [self.save.amount doubleValue]) {
-            self.save.amount = [NSNumber numberWithDouble:[self.amountText.text doubleValue]];
+        if ([self.amountText.text doubleValue] != [self.spend.amount doubleValue]) {
+            self.spend.amount = [NSNumber numberWithDouble:[self.amountText.text doubleValue]];
         }
     } else if ([textField isEqual:self.dateText]) {
-        if (![self.datePicker.date isEqualToDate:self.save.date]) {
-            self.save.date = self.datePicker.date;
+        if (![self.datePicker.date isEqualToDate:self.spend.date]) {
+            self.spend.date = self.datePicker.date;
             self.dateText.text = [self processDate:self.datePicker.date];
             
             //Sections in TableViewController are organized by day, month and year. secion_id = (year * 10000) + (month * 100) + day
@@ -117,7 +117,7 @@
             NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.datePicker.date];
             NSString *tmp = [NSString stringWithFormat:@"%d", ([components year] * 10000) + ([components month]*100) + [components day]];
             
-            self.save.section_id = tmp;
+            self.spend.section_id = tmp;
         }
     }
 }
@@ -138,8 +138,8 @@
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
-    if (![self.save.describe isEqualToString:textView.text]) {
-        self.save.describe = textView.text;
+    if (![self.spend.name isEqualToString:textView.text]) {
+        self.spend.name = textView.text;
     }
     
 }
@@ -147,7 +147,7 @@
 
 #pragma mark - Target Action
 - (IBAction)deletePressed:(UIButton *)sender {
-    [self.save.managedObjectContext deleteObject:self.save];
+    [self.spend.managedObjectContext deleteObject:self.spend];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

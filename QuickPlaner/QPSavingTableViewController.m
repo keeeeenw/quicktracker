@@ -64,13 +64,7 @@
     Saving *save = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     cell.textLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", [save.amount doubleValue]];
     
-    if (save.describe) {
-        cell.detailTextLabel.text = save.describe;
-    } else {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:save.date];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%02d:%02d", [components hour],[components minute]];
-    }
+    cell.detailTextLabel.text = save.describe;
     
     return cell;
 }

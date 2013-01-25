@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Saving+Budget.h"
+#import "Spending+Budget.h"
 
 @interface QPSavingDetailTableViewController : UITableViewController
 

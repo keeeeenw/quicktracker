@@ -10,6 +10,7 @@
 #import "QPViewController.h"
 #import "DocumentHelper.h"
 #import "Spending+Budget.h"
+#import "QPSpendingDetailTableViewController.h"
 
 @interface QPSpendingTableViewController ()
 
@@ -64,13 +65,7 @@
     Spending *spend = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     cell.textLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", [spend.amount doubleValue]];
     
-    if (spend.name) {
-        cell.detailTextLabel.text = spend.name;
-    } else {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:spend.date];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%02d:%02d", [components hour],[components minute]];
-    }
+    cell.detailTextLabel.text = spend.name;
     
     return cell;
 }
@@ -125,6 +120,16 @@
         [[NSUserDefaults standardUserDefaults] setDouble:userDefaultSpending+[spend.amount doubleValue] forKey:SPEND];
         [self.fetchedResultsController.managedObjectContext deleteObject:spend];
     } 
+}
+
+#pragma mark - Sigue Operation
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //The second part of the "or" operation is used by segue for FlickrRecentPhotoViewController
+    if ([segue.identifier isEqualToString:@"Spending Detail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        [segue.destinationViewController setSpend:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    }
 }
 
 @end
