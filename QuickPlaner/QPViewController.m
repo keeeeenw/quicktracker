@@ -247,7 +247,7 @@
             
             double total = saving + spending; //noted spending is negative
             
-            [UIView animateWithDuration:1 animations:^{
+            [UIView animateWithDuration:0.5 animations:^{
                 self.moneyRemainedLabel.alpha = 1;
                 self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
             }];
