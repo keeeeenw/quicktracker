@@ -748,57 +748,6 @@
         <image name="digit_button" width="16" height="16"/>
         <image name="enter_button" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="QPHistoryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPHistoryTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="savingCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="spendingCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="totalCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="QPSavingDetailTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSavingDetailTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="QPSavingTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSavingTableViewController.h"/>
-        </class>
-        <class className="QPSpendingDetailTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingDetailTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="QPSpendingTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingTableViewController.h"/>
-        </class>
-        <class className="QPViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="modeSwitchValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="purchaseTextField" candidateClass="UITextField"/>
-                <relationship kind="outletCollection" name="quickAddButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

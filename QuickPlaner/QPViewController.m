@@ -200,6 +200,15 @@
     //This will be changed to 1 via View Animation
     self.moneyRemainedLabel.alpha = 0;
     
+    NSString * msg = @"loading...";
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([language isEqualToString:@"zh-Hans"]) {
+        msg = @"载入中...";
+    }
+    
+    [self startSpinner:msg];
+    
     __block double saving;
     __block double spending;
     
@@ -217,6 +226,12 @@
     } else {
         spending = [[[NSUserDefaults standardUserDefaults] objectForKey:SPEND] doubleValue];
     }
+    
+    //Update the money label using data in NSUserDefaults
+    [UIView animateWithDuration:0.5 animations:^{
+        self.moneyRemainedLabel.alpha = 0.8;
+        self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", saving+spending];
+    }];
     
     //Check whether the data in NSUserDefaults is in conflict with the data in CoreData
     //If there is a conflict, resolve it by using the data in CoreData
@@ -250,6 +265,7 @@
             [UIView animateWithDuration:0.5 animations:^{
                 self.moneyRemainedLabel.alpha = 1;
                 self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+                [self stopSpinner];
             }];
         }];
     }];
