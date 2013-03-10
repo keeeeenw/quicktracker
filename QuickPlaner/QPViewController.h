@@ -22,6 +22,8 @@
 #define SPEND @"Spending"
 #define MODE @"ApplicationMode"
 
+#define QUICK_DIGITS @"QuickDigits"
+
 @interface QPViewController : UIViewController
 
 @end

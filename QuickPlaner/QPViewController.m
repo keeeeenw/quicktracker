@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
 @property (nonatomic) BOOL appMode; //0 is spending, 1 is save
 @property (strong, nonatomic) UIAlertView *alertView;
+@property (strong, nonatomic) UIAlertView *digitChangeAlertView;
+@property (strong, nonatomic) UIButton *quickAddButton;
 
 @end
 
@@ -45,6 +47,32 @@
     return _alertView;
 }
 
+-(UIAlertView *) digitChangeAlertView{
+    if (!_digitChangeAlertView) {
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        if ([language isEqualToString:@"zh-Hans"]) {
+            NSString *cnMsg = @"请输入新的自定义金额";
+            _digitChangeAlertView = [[UIAlertView alloc] initWithTitle:@"自定义快速输入键" message:cnMsg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        } else {
+            NSString *enMsg = @"Please enter the new amount";
+            _digitChangeAlertView = [[UIAlertView alloc] initWithTitle:@"Customize Quick Button" message:enMsg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+        }
+    }
+    
+    [_digitChangeAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+    UITextField *textField = [_digitChangeAlertView textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    return _digitChangeAlertView;
+}
+
+-(UIButton *)quickAddButton{
+    if(_quickAddButton){
+        _quickAddButton.titleLabel.text = @"-1"; //set to this by default for checking
+    }
+    return _quickAddButton;
+}
 
 #pragma mark - Helper Methods
 
@@ -57,6 +85,26 @@
     [currencyLabel sizeToFit];
     self.purchaseTextField.leftView = currencyLabel;
     self.purchaseTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    //Update the amount on the quick digit button
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS]){
+        NSMutableArray *digits = [[NSMutableArray alloc]init];
+        
+        for (UIButton *button in self.quickAddButtons) {
+            [digits addObject:[button.titleLabel.text substringFromIndex:1]];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[digits copy] forKey:QUICK_DIGITS];
+    } else {
+        NSArray *digits = [[[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS] copy];
+        
+        NSUInteger index = 0;
+        
+        for (UIButton *button in self.quickAddButtons) {
+            [self updateQuickAddButton:button WithAmount:[digits objectAtIndex:index]];
+            index++;
+        }        
+    }
     
     //Setting up self.moneyRemainedLabel
     [self updateMoneyRemainedLabel];
@@ -283,8 +331,18 @@
     }
 }
 
+- (void)updateQuickAddButton:(UIButton *)button WithAmount:(NSString *)amount{
+    NSString *sign = @"+";
+    if ([button.titleLabel.text hasPrefix:@"-"]){
+        sign = @"-";
+    }
+    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateNormal];
+    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateHighlighted];
+}
+
 #pragma mark - Guesture Handling
 - (IBAction)quickAddSwiped:(UISwipeGestureRecognizer *)sender {
+    //handles the speical swipe up of the digit button
     CGPoint touchLocation = [sender locationInView:self.view];
     CGPoint moneyRemainedLabelLocation = self.moneyRemainedLabel.center;
     for (UIView *view in self.view.subviews) {
@@ -303,6 +361,13 @@
             }
         }
     }
+}
+
+- (IBAction)quickDigitPressed:(UILongPressGestureRecognizer *)sender {
+    //handles holding of digit button that changes digit amount
+    NSLog(@"Quick Digit Pressed");
+    self.quickAddButton = (UIButton *)sender.view;
+    [self.digitChangeAlertView show];
 }
 
 
@@ -352,12 +417,32 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
-        [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
-        [DocumentHelper removeDocument:SAVE];
-        [DocumentHelper removeDocument:SPEND];
-        [self setup];
+    if (alertView == self.alertView) {
+        if (buttonIndex == 1) {
+            [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SAVE];
+            [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:SPEND];
+            [DocumentHelper removeDocument:SAVE];
+            [DocumentHelper removeDocument:SPEND];
+            [self setup];
+        }
+    } else if (alertView == self.digitChangeAlertView){
+        if (buttonIndex == 1) {
+            NSString *amount = [alertView textFieldAtIndex:0].text;
+            //sync with NSUserDefaults
+            NSMutableArray *digits = [[[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS] mutableCopy];
+            
+            for (NSInteger i=0; i<[digits count]; i++) {
+                NSString *digit = [digits objectAtIndex:i];
+                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
+                    [digits replaceObjectAtIndex:i withObject:amount];
+                }
+            }
+            [[NSUserDefaults standardUserDefaults]setObject:[digits copy] forKey:QUICK_DIGITS];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+            //update amount in the view
+            [self updateQuickAddButton:self.quickAddButton WithAmount:amount];
+        }
     }
 }
 
@@ -394,6 +479,7 @@
     
     //Setting up UIActionSheetDelegate
     self.alertView.delegate = self;
+    self.digitChangeAlertView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
