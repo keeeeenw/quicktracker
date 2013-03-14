@@ -15,12 +15,24 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
+//@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
 @property (nonatomic) BOOL appMode; //0 is spending, 1 is save
 @property (strong, nonatomic) UIAlertView *alertView;
 @property (strong, nonatomic) UIAlertView *digitChangeAlertView;
-@property (strong, nonatomic) UIButton *quickAddButton;
+@property int buttonPressedIndex; //index of the button pressed by user
+
+//Outlets for all the quick buttons
+@property (weak, nonatomic) IBOutlet UIButton *quickButton1;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton2;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton3;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton4;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton5;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton6;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton7;
+@property (weak, nonatomic) IBOutlet UIButton *quickButton8;
+
+@property (strong, nonatomic) NSArray *quickAddButtons; //collection of the buttons above
 
 @end
 
@@ -28,7 +40,6 @@
 
 @synthesize moneyRemainedLabel = _moneyRemainedLabel;
 @synthesize purchaseTextField = _purchaseTextField;
-@synthesize quickAddButtons = _quickAddButtons;
 @synthesize modeSwitch = _modeSwitch;
 @synthesize appMode = _appMode;
 
@@ -46,6 +57,7 @@
     }
     return _alertView;
 }
+
 
 -(UIAlertView *) digitChangeAlertView{
     if (!_digitChangeAlertView) {
@@ -67,11 +79,12 @@
     return _digitChangeAlertView;
 }
 
--(UIButton *)quickAddButton{
-    if(_quickAddButton){
-        _quickAddButton.titleLabel.text = @"-1"; //set to this by default for checking
+-(NSArray *)quickAddButtons{
+    if(_quickAddButtons){
+        _quickAddButtons = [[NSArray alloc]initWithObjects:self.quickButton1,self.quickButton2,
+                            self.quickButton3,self.quickButton4,self.quickButton5,self.quickButton6,self.quickButton7,self.quickButton8,nil];
     }
-    return _quickAddButton;
+    return _quickAddButtons;
 }
 
 #pragma mark - Helper Methods
@@ -86,7 +99,7 @@
     self.purchaseTextField.leftView = currencyLabel;
     self.purchaseTextField.leftViewMode = UITextFieldViewModeAlways;
     
-    //Update the amount on the quick digit button
+    //Store the amount on the quick digit button if not exist
     if (![[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS]){
         NSMutableArray *digits = [[NSMutableArray alloc]init];
         
@@ -95,6 +108,7 @@
         }
         
         [[NSUserDefaults standardUserDefaults] setObject:[digits copy] forKey:QUICK_DIGITS];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     } else {
         NSArray *digits = [[[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS] copy];
         
@@ -103,7 +117,13 @@
         for (UIButton *button in self.quickAddButtons) {
             [self updateQuickAddButton:button WithAmount:[digits objectAtIndex:index]];
             index++;
-        }        
+        }
+    }
+    
+    //Setup guesture for each button and the label
+    for (UIButton *button in self.quickAddButtons) {
+        UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(quickDigitPressed:)];
+        [button addGestureRecognizer:recognizer];
     }
     
     //Setting up self.moneyRemainedLabel
@@ -365,8 +385,15 @@
 
 - (IBAction)quickDigitPressed:(UILongPressGestureRecognizer *)sender {
     //handles holding of digit button that changes digit amount
-    NSLog(@"Quick Digit Pressed");
-    self.quickAddButton = (UIButton *)sender.view;
+    UIButton *buttonPressed = (UIButton *)sender.view;
+    
+    for (NSInteger i=0; i<[self.quickAddButtons count]; i++) {
+        UIButton *button = [self.quickAddButtons objectAtIndex:i];
+        if ([button isEqual:buttonPressed]){
+            self.buttonPressedIndex = i;
+        }
+    }
+    
     [self.digitChangeAlertView show];
 }
 
@@ -431,17 +458,37 @@
             //sync with NSUserDefaults
             NSMutableArray *digits = [[[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS] mutableCopy];
             
-            for (NSInteger i=0; i<[digits count]; i++) {
-                NSString *digit = [digits objectAtIndex:i];
-                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
-                    [digits replaceObjectAtIndex:i withObject:amount];
-                }
+            //Find the button that need to be changed and update NSUserDefaults
+//            for (NSInteger i=0; i<[digits count]; i++) {
+//                NSString *digit = [digits objectAtIndex:i];
+//                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
+//                    [digits replaceObjectAtIndex:i withObject:amount];
+//                }
+//            }
+            
+//            for (NSInteger i=0; i<[self.quickAddButtons count]; i++) {
+//                UIButton *button = [self.quickAddButtons objectAtIndex:i];
+////                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
+////                    [digits replaceObjectAtIndex:i withObject:amount];
+////                }
+//                if ([button isEqual:self.quickAddButton]){
+//                    [digits replaceObjectAtIndex:i withObject:amount];
+//                    [self updateQuickAddButton:button WithAmount:amount]; //update amount in the view
+//                }
+//            }
+            
+            if (self.buttonPressedIndex && ![amount isEqual:@""]) {
+                UIButton *button = [self.quickAddButtons objectAtIndex:self.buttonPressedIndex];
+                [digits replaceObjectAtIndex:self.buttonPressedIndex withObject:amount];
+                [self updateQuickAddButton:button WithAmount:amount];
             }
+
+            
             [[NSUserDefaults standardUserDefaults]setObject:[digits copy] forKey:QUICK_DIGITS];
             [[NSUserDefaults standardUserDefaults] synchronize];
-                        
-            //update amount in the view
-            [self updateQuickAddButton:self.quickAddButton WithAmount:amount];
+            
+            self.buttonPressedIndex = 0;
+            [alertView textFieldAtIndex:0].text = @"";
         }
     }
 }
