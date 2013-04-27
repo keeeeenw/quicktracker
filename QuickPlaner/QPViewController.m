@@ -26,11 +26,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *quickButton1;
 @property (weak, nonatomic) IBOutlet UIButton *quickButton2;
 @property (weak, nonatomic) IBOutlet UIButton *quickButton3;
-@property (weak, nonatomic) IBOutlet UIButton *quickButton4;
+//@property (weak, nonatomic) IBOutlet UIButton *quickButton4;
 @property (weak, nonatomic) IBOutlet UIButton *quickButton5;
 @property (weak, nonatomic) IBOutlet UIButton *quickButton6;
 @property (weak, nonatomic) IBOutlet UIButton *quickButton7;
-@property (weak, nonatomic) IBOutlet UIButton *quickButton8;
+//@property (weak, nonatomic) IBOutlet UIButton *quickButton8;
 
 @property (strong, nonatomic) NSArray *quickAddButtons; //collection of the buttons above
 
@@ -74,7 +74,7 @@
     [_digitChangeAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
     UITextField *textField = [_digitChangeAlertView textFieldAtIndex:0];
-    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
     
     return _digitChangeAlertView;
 }
@@ -82,7 +82,7 @@
 -(NSArray *)quickAddButtons{
     if(_quickAddButtons){
         _quickAddButtons = [[NSArray alloc]initWithObjects:self.quickButton1,self.quickButton2,
-                            self.quickButton3,self.quickButton4,self.quickButton5,self.quickButton6,self.quickButton7,self.quickButton8,nil];
+                            self.quickButton3,self.quickButton5,self.quickButton6,self.quickButton7,nil];
     }
     return _quickAddButtons;
 }
@@ -383,7 +383,7 @@
     }
 }
 
-- (IBAction)quickDigitPressed:(UILongPressGestureRecognizer *)sender {
+- (void)quickDigitPressed:(UILongPressGestureRecognizer *)sender {
     //handles holding of digit button that changes digit amount
     UIButton *buttonPressed = (UIButton *)sender.view;
     
@@ -459,25 +459,8 @@
             NSMutableArray *digits = [[[NSUserDefaults standardUserDefaults] objectForKey:QUICK_DIGITS] mutableCopy];
             
             //Find the button that need to be changed and update NSUserDefaults
-//            for (NSInteger i=0; i<[digits count]; i++) {
-//                NSString *digit = [digits objectAtIndex:i];
-//                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
-//                    [digits replaceObjectAtIndex:i withObject:amount];
-//                }
-//            }
             
-//            for (NSInteger i=0; i<[self.quickAddButtons count]; i++) {
-//                UIButton *button = [self.quickAddButtons objectAtIndex:i];
-////                if ([digit doubleValue] == [[self.quickAddButton.titleLabel.text substringFromIndex:1] doubleValue]) {
-////                    [digits replaceObjectAtIndex:i withObject:amount];
-////                }
-//                if ([button isEqual:self.quickAddButton]){
-//                    [digits replaceObjectAtIndex:i withObject:amount];
-//                    [self updateQuickAddButton:button WithAmount:amount]; //update amount in the view
-//                }
-//            }
-            
-            if (self.buttonPressedIndex && ![amount isEqual:@""]) {
+            if (self.buttonPressedIndex >= 0 && ![amount isEqual:@""]) {
                 UIButton *button = [self.quickAddButtons objectAtIndex:self.buttonPressedIndex];
                 [digits replaceObjectAtIndex:self.buttonPressedIndex withObject:amount];
                 [self updateQuickAddButton:button WithAmount:amount];

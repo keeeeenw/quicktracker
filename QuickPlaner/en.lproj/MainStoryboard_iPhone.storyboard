@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0td-fS-3xm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0td-fS-3xm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -19,7 +19,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="MPE-Oe-u6m">
                                 <rect key="frame" x="11" y="66" width="300" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="99"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="111"/>
                                 <color key="textColor" red="0.37254902720451355" green="0.46274513006210327" blue="0.61960786581039429" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="cND-Di-kwd">
-                                <rect key="frame" x="47" y="475" width="143" height="44"/>
+                                <rect key="frame" x="47" y="479" width="143" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Spend"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSf-r3-KCh">
-                                <rect key="frame" x="213" y="475" width="60" height="44"/>
+                                <rect key="frame" x="225" y="475" width="50" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="reset">
@@ -71,11 +71,11 @@
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="slS-SP-GhN">
-                                <rect key="frame" x="47" y="320" width="50" height="50"/>
+                                <rect key="frame" x="47" y="320" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+0.01" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+0.01">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -83,15 +83,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="36A-Of-HJ7"/>
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="hvq-p6-yDc"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pQn-3e-x02">
-                                <rect key="frame" x="105" y="320" width="52" height="50"/>
+                                <rect key="frame" x="133" y="320" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+0.25" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+0.25">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -99,15 +100,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="fKP-W5-flG"/>
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="m8J-kZ-YZa"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cdI-QO-hOC">
-                                <rect key="frame" x="165" y="320" width="50" height="50"/>
+                                <rect key="frame" x="223" y="320" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+1" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+1">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -119,27 +121,12 @@
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="Dkb-zD-IN7"/>
                                 </connections>
                             </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wSt-bn-hMe">
-                                <rect key="frame" x="223" y="320" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+2" backgroundImage="digit_button@2x.png">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="ypU-Hr-dnE"/>
-                                </connections>
-                            </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ha4-Rw-vlc">
-                                <rect key="frame" x="47" y="396" width="50" height="50"/>
+                                <rect key="frame" x="47" y="396" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+5" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+5">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -147,14 +134,15 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="I4y-ft-xPj"/>
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="mtO-5z-uJp"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pEW-SQ-2NE">
-                                <rect key="frame" x="106" y="396" width="50" height="50"/>
+                                <rect key="frame" x="133" y="396" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+10" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+10">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -162,14 +150,15 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="b31-pZ-vdV"/>
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="WYY-Bf-pkV"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B9F-1v-xec">
-                                <rect key="frame" x="165" y="396" width="50" height="50"/>
+                                <rect key="frame" x="223" y="396" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+50" backgroundImage="digit_button@2x.png">
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
+                                <state key="normal" title="+50">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -177,22 +166,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="quickAddPressed:" destination="auB-Y5-dMS" eventType="touchUpInside" id="QRc-oi-EIN"/>
                                     <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="X1d-gd-x4l"/>
-                                </connections>
-                            </button>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sv8-cJ-8BU">
-                                <rect key="frame" x="223" y="396" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="+100" backgroundImage="digit_button@2x.png">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ELs-HP-uGI" appends="YES" id="j2R-QH-Gvn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,15 +187,11 @@
                         <outlet property="quickButton1" destination="slS-SP-GhN" id="3dM-tk-0VQ"/>
                         <outlet property="quickButton2" destination="pQn-3e-x02" id="Eo7-N5-w1J"/>
                         <outlet property="quickButton3" destination="cdI-QO-hOC" id="37o-bu-wBS"/>
-                        <outlet property="quickButton4" destination="wSt-bn-hMe" id="qEq-xM-2ld"/>
                         <outlet property="quickButton5" destination="ha4-Rw-vlc" id="hAX-u2-f2r"/>
                         <outlet property="quickButton6" destination="pEW-SQ-2NE" id="dZL-7U-MPv"/>
                         <outlet property="quickButton7" destination="B9F-1v-xec" id="rhv-Vs-hZK"/>
-                        <outlet property="quickButton8" destination="Sv8-cJ-8BU" id="7EX-ke-NAW"/>
-                        <outletCollection property="quickAddButtons" destination="wSt-bn-hMe" id="lel-4D-3FB"/>
                         <outletCollection property="quickAddButtons" destination="B9F-1v-xec" id="2gk-9B-pzn"/>
                         <outletCollection property="quickAddButtons" destination="pEW-SQ-2NE" id="ZTH-qm-zQw"/>
-                        <outletCollection property="quickAddButtons" destination="Sv8-cJ-8BU" id="Cee-p0-ybT"/>
                         <outletCollection property="quickAddButtons" destination="ha4-Rw-vlc" id="x4e-bE-U9D"/>
                         <outletCollection property="quickAddButtons" destination="slS-SP-GhN" id="292-Ik-M4X"/>
                         <outletCollection property="quickAddButtons" destination="pQn-3e-x02" id="7Ff-Dl-GDz"/>
@@ -746,7 +717,6 @@
     <resources>
         <image name="Default-568h@2x.png" width="640" height="1136"/>
         <image name="delete_button.png" width="600" height="88"/>
-        <image name="digit_button@2x.png" width="100" height="100"/>
         <image name="enter_button" width="16" height="16"/>
     </resources>
     <classes>
@@ -792,7 +762,6 @@
                 <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
                 <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="quickDigitPressed:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
@@ -800,11 +769,9 @@
                 <relationship kind="outlet" name="quickButton1" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="quickButton2" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="quickButton3" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="quickButton4" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="quickButton5" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="quickButton6" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="quickButton7" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="quickButton8" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>
