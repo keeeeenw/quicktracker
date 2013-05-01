@@ -7,9 +7,11 @@
 //
 
 #import "QPSavingDetailTableViewController.h"
+#import <MapKit/MapKit.h>
+#import "QPMapAnnotation.h"
 
 @interface QPSavingDetailTableViewController () <UITextFieldDelegate, UITextViewDelegate>
-
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *amountText;
 @property (weak, nonatomic) IBOutlet UITextField *dateText;
 @property (weak, nonatomic) IBOutlet UITextView *noteText;
@@ -54,6 +56,25 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    //Setup MapView
+    NSNumber *latitude = self.save.latitude;
+    NSNumber *longitude = self.save.longitude;
+    
+    //TODO: make a new class using record for both saving and spending
+    NSDictionary *record = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [self.save.amount stringValue],@"Amount",
+                            latitude, @"Latitude",
+                            longitude, @"Longitdue",
+                            self.save.describe, @"Note",
+                            nil];
+    
+    QPMapAnnotation *annotation = [QPMapAnnotation annotationForRecord:record];
+    [self.mapView addAnnotation:annotation];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([annotation coordinate], 1500, 1500);
+	[self.mapView setRegion:region animated:YES];
+	[self.mapView selectAnnotation:annotation animated:YES];
+    [self.mapView setNeedsDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -68,6 +89,17 @@
 }
 
 #pragma mark - Helper Methods
+
+// When a map annotation point is added, zoom to it (1500 range)
+- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
+{
+	MKAnnotationView *annotationView = [views objectAtIndex:0];
+	id <MKAnnotation> mp = [annotationView annotation];
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 1500, 1500);
+	[mv setRegion:region animated:YES];
+	[mv selectAnnotation:mp animated:YES];
+}
+
 
 -(void)setUpTextFields{
     //Adding CurrencyLabel to amountText.text

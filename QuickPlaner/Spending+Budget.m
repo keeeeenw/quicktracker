@@ -44,6 +44,9 @@
     spending.name = [purchaseInfo valueForKey:PURCHASE_NAME];
     spending.date = [purchaseInfo valueForKey:PURCHASE_DATE];
     spending.amount = [purchaseInfo valueForKey:PURCHASE_AMOUNT];
+    spending.longitude = [purchaseInfo valueForKey:PURCHASE_LONGITUDE];
+    spending.latitude = [purchaseInfo valueForKey:PURCHASE_LATITUDE];
+
     
     //Sections in TableViewController are organized by day, month and year. secion_id = (year * 10000) + (month * 100) + day
     NSCalendar *calendar = [NSCalendar currentCalendar];

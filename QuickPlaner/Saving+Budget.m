@@ -41,6 +41,9 @@
     save.describe = [saveInfo valueForKey:SAVE_DESCRIPTION];
     save.date = [saveInfo valueForKey:SAVE_DATE];
     save.amount = [saveInfo valueForKey:SAVE_AMOUNT];
+    save.latitude = [saveInfo valueForKey:SAVE_LATITUDE];
+    save.longitude = [saveInfo valueForKey:SAVE_LONGITUDE];
+
     //NSLog(@"%@",save);
     
     //Sections in TableViewController are organized by day, month and year. secion_id = (year * 10000) + (month * 100) + day

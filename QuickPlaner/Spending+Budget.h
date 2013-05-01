@@ -12,6 +12,8 @@
 #define PURCHASE_NAME @"purchase_name"
 #define PURCHASE_DATE @"purchase_date"
 #define PURCHASE_AMOUNT @"purchase_amount"
+#define PURCHASE_LATITUDE @"PURCHASE_latitude"
+#define PURCHASE_LONGITUDE @"PURCHASE_longitude"
 
 @interface Spending (Budget)
 

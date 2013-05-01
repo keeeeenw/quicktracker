@@ -7,6 +7,7 @@
 //
 
 #import "DocumentHelper.h"
+#import <CoreData/CoreData.h>
 
 @interface DocumentHelper()
 
@@ -19,6 +20,7 @@
     static UIManagedDocument *database = nil;
     if (!database) {
         database = [[UIManagedDocument alloc]initWithFileURL:fileURL];
+
     }
     return database;
 }

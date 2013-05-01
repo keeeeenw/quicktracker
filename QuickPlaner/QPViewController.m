@@ -10,8 +10,9 @@
 #import "DocumentHelper.h"
 #import "Spending+Budget.h"
 #import "Saving+Budget.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface QPViewController () <UITextFieldDelegate,UIActionSheetDelegate>
+@interface QPViewController () <UITextFieldDelegate,UIActionSheetDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
@@ -33,7 +34,12 @@
 //@property (weak, nonatomic) IBOutlet UIButton *quickButton8;
 
 @property (strong, nonatomic) NSArray *quickAddButtons; //collection of the buttons above
+@property (strong, nonatomic) CLLocationManager *locationManager; //prcoess location
 
+//TODO: Light Weight Data Migration
+//@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+//@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+//@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @end
 
 @implementation QPViewController
@@ -43,7 +49,52 @@
 @synthesize modeSwitch = _modeSwitch;
 @synthesize appMode = _appMode;
 
-#pragma Setup Properties
+#pragma mark - Sync Models and Views
+-(CLLocationManager *) locationManager{
+    if(!_locationManager){
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    }
+    return _locationManager;
+}
+
+//- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+//    
+//    if (_persistentStoreCoordinator != nil) {
+//        return _persistentStoreCoordinator;
+//    }
+//    
+//    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"MBPModel.sqlite"]];
+//    
+//    // handle db upgrade
+//    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+//                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+//    
+//    NSError *error = nil;
+//    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+//    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
+//        // Handle error
+//    }
+//    
+//    return _persistentStoreCoordinator;
+//}
+//
+//- (NSManagedObjectModel *)managedObjectModel {
+//    
+//    if (_managedObjectModel != nil) {
+//        return _managedObjectModel;
+//    }
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"MBPModel" ofType:@"momd"];
+//    NSURL *momURL = [NSURL fileURLWithPath:path];
+//    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:momURL];
+//    
+//    return _managedObjectModel;
+//}
+
+#pragma mark - Setup Properties
 -(UIAlertView *) alertView{
     if (!_alertView) {
         NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
@@ -157,6 +208,9 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    [self.locationManager startUpdatingLocation]; //try to refresh the data
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)startSpinner:(NSString *)activity
@@ -173,6 +227,39 @@
     self.navigationItem.title = self.title;
 }
 
+- (void)updateQuickAddButtonsUsingSign:(NSString *)sign{
+    for (UIButton *button in self.quickAddButtons) {
+        if ([button.titleLabel.text hasPrefix:@"+"]||
+            [button.titleLabel.text hasPrefix:@"-"]) {
+            NSString *figure = [button.titleLabel.text substringFromIndex:1];
+            [button setTitle:[sign stringByAppendingString:figure] forState:UIControlStateNormal];
+            [button setTitle:[sign stringByAppendingString:figure] forState:UIControlStateHighlighted];
+        }
+    }
+}
+
+- (void)updateQuickAddButton:(UIButton *)button WithAmount:(NSString *)amount{
+    NSString *sign = @"+";
+    if ([button.titleLabel.text hasPrefix:@"-"]){
+        sign = @"-";
+    }
+    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateNormal];
+    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateHighlighted];
+}
+
+/**
+ Returns the NSString to the application's Documents directory.
+ */
+- (NSString *)applicationDocumentsDirectory
+{
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [searchPaths lastObject];
+    
+    return documentPath;
+}
+
+#pragma mark - Money Helper
+
 - (void) processPurchase:(NSString *)purchaseAmount
               fromButton:(UIButton *)sender{
     [self startSpinner:@"Updating Spending"];
@@ -186,12 +273,25 @@
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     NSString *purchase_id = [NSString stringWithFormat:@"%f", timeStamp];
     
+    //Getting the location
+    [self.locationManager startUpdatingLocation];
+    CLLocation *location = self.locationManager.location;
+    NSLog(@"Purchase Location %f %f", location.coordinate.latitude, location.coordinate.longitude);
+    NSNumber *latitude = [NSNumber numberWithFloat:location.coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithFloat:location.coordinate.longitude];
+    [self.locationManager stopUpdatingLocation];
+
+    
     //Create purchaseInfo to be recieved spendWithPurchaseInfo:inManangedObjectContext
     NSDictionary *purchaseInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                   purchase_id,PURCHASE_ID,
                                   date,PURCHASE_DATE,
                                   [NSNumber numberWithDouble:[purchaseAmount doubleValue]], PURCHASE_AMOUNT,
+                                  latitude, PURCHASE_LATITUDE,
+                                  longitude, PURCHASE_LONGITUDE,
                                   nil];
+    
+    
     //sender.enabled = NO;
     
     //Storing Information to Database
@@ -226,11 +326,21 @@
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     NSString *save_id = [NSString stringWithFormat:@"%f", timeStamp];
     
+    //Getting the location
+    [self.locationManager startUpdatingLocation];
+    CLLocation *location = self.locationManager.location;
+    NSLog(@"Save Location %f %f", location.coordinate.latitude, location.coordinate.longitude);
+    NSNumber *latitude = [NSNumber numberWithFloat:location.coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithFloat:location.coordinate.longitude];
+    [self.locationManager stopUpdatingLocation];
+    
     //Create saveInfo to be recieved savedWithPurchaseInfo:inManangedObjectContext
     NSDictionary *saveInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                               save_id,SAVE_ID,
                               date,SAVE_DATE,
                               [NSNumber numberWithDouble:[saveAmount doubleValue]], SAVE_AMOUNT,
+                              latitude, SAVE_LATITUDE,
+                              longitude, SAVE_LONGITUDE,
                               nil];
     //sender.enabled = NO;
     
@@ -340,26 +450,6 @@
     
 }
 
-- (void)updateQuickAddButtonsUsingSign:(NSString *)sign{
-    for (UIButton *button in self.quickAddButtons) {
-        if ([button.titleLabel.text hasPrefix:@"+"]||
-            [button.titleLabel.text hasPrefix:@"-"]) {
-            NSString *figure = [button.titleLabel.text substringFromIndex:1];
-            [button setTitle:[sign stringByAppendingString:figure] forState:UIControlStateNormal];
-            [button setTitle:[sign stringByAppendingString:figure] forState:UIControlStateHighlighted];
-        }
-    }
-}
-
-- (void)updateQuickAddButton:(UIButton *)button WithAmount:(NSString *)amount{
-    NSString *sign = @"+";
-    if ([button.titleLabel.text hasPrefix:@"-"]){
-        sign = @"-";
-    }
-    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateNormal];
-    [button setTitle:[sign stringByAppendingString:amount] forState:UIControlStateHighlighted];
-}
-
 #pragma mark - Guesture Handling
 - (IBAction)quickAddSwiped:(UISwipeGestureRecognizer *)sender {
     //handles the speical swipe up of the digit button
@@ -438,6 +528,8 @@
 }
 
 -(void)dismissKeyboard {
+    //prevent updating the amount when dismiss keyboard
+    self.purchaseTextField.text = @"";
     [self.purchaseTextField resignFirstResponder];
 }
 
@@ -499,6 +591,13 @@
     }
 }
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    //leave here for future implementation
+}
+
+
 #pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad{
@@ -510,6 +609,9 @@
     //Setting up UIActionSheetDelegate
     self.alertView.delegate = self;
     self.digitChangeAlertView.delegate = self;
+    
+    //Setup core location CLLocationManagerDelegate
+    self.locationManager.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

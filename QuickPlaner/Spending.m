@@ -2,8 +2,8 @@
 //  Spending.m
 //  QuickPlaner
 //
-//  Created by Zixiao on 12/30/12.
-//  Copyright (c) 2012 Zixiao Wang. All rights reserved.
+//  Created by Zixiao on 4/27/13.
+//  Copyright (c) 2013 Zixiao Wang. All rights reserved.
 //
 
 #import "Spending.h"
@@ -13,8 +13,10 @@
 
 @dynamic amount;
 @dynamic date;
+@dynamic latitude;
+@dynamic longitude;
 @dynamic name;
-@dynamic spend_id;
 @dynamic section_id;
+@dynamic spend_id;
 
 @end

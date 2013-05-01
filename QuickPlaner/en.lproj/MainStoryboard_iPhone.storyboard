@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller - My Quick Tracker-->
+        <!--View Controller - Quick Tracker-->
         <scene sceneID="8wv-P5-Wf9">
             <objects>
-                <viewController title="My Quick Tracker" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
+                <viewController title="Quick Tracker" id="auB-Y5-dMS" customClass="QPViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xxz-qu-c4d">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSf-r3-KCh">
-                                <rect key="frame" x="225" y="475" width="50" height="54"/>
+                                <rect key="frame" x="225" y="475" width="50" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="reset">
@@ -316,7 +316,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2l-g0-WUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="-502"/>
+            <point key="canvasLocation" x="-297" y="-531"/>
         </scene>
         <!--Spending Table View Controller - Spending-->
         <scene sceneID="Sz4-gd-eOx">
@@ -365,7 +365,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbT-E0-zfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="181" y="-262"/>
+            <point key="canvasLocation" x="68" y="-291"/>
         </scene>
         <!--Saving Detail Table View Controller - Saving Detail-->
         <scene sceneID="2Vl-sI-pDG">
@@ -463,24 +463,43 @@
                             </tableViewSection>
                             <tableViewSection id="hdZ-PQ-0kg">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fEm-V7-ZZB">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="181" id="fEm-V7-ZZB">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="183"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="cBJ-rY-RSr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </mapView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="3RV-Kk-ke4">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IxG-mQ-r5X">
+                                        <rect key="frame" x="0.0" y="473" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" alpha="0.99999999999999989" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2wD-Ul-uTY">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WdS-V0-Swl">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                    <color key="tintColor" red="1" green="0.0" blue="0.010851006337158076" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.01085100634" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Delete" backgroundImage="delete_button.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deletePressed:" destination="KAZ-wN-5Pw" eventType="touchUpInside" id="ULx-x8-cgQ"/>
+                                                        <action selector="deletePressed:" destination="KAZ-wN-5Pw" eventType="touchUpInside" id="pT3-2n-XOl"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -499,12 +518,13 @@
                     <connections>
                         <outlet property="amountText" destination="CVo-Ez-liW" id="Siu-9o-T86"/>
                         <outlet property="dateText" destination="dPe-Vt-skf" id="1EK-Gk-LH9"/>
+                        <outlet property="mapView" destination="cBJ-rY-RSr" id="owM-YT-o3f"/>
                         <outlet property="noteText" destination="apP-SO-zav" id="JLn-a5-98T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWN-JS-YMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="-646"/>
+            <point key="canvasLocation" x="526" y="-905"/>
         </scene>
         <!--Saving Table View Controller - Saving-->
         <scene sceneID="qm1-kr-gHE">
@@ -553,7 +573,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYK-zT-JpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="-1010"/>
+            <point key="canvasLocation" x="146" y="-1039"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fYC-LL-D0i">
@@ -670,14 +690,33 @@
                             </tableViewSection>
                             <tableViewSection id="fNg-fH-bst">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4pe-PY-JY1">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="181" id="4pe-PY-JY1">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="183"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Oke-kU-Orh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </mapView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="H10-dZ-uPe">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="985-W8-0Zi">
+                                        <rect key="frame" x="0.0" y="473" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8cJ-cp-pHy">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KRC-BV-ux6">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -687,7 +726,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deletePressed:" destination="Mzj-oF-JnA" eventType="touchUpInside" id="AFz-6M-0Op"/>
+                                                        <action selector="deletePressed:" destination="Mzj-oF-JnA" eventType="touchUpInside" id="5RI-02-e0R"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -706,12 +745,13 @@
                     <connections>
                         <outlet property="amountText" destination="X12-dp-Tvm" id="fqF-Ke-O3Z"/>
                         <outlet property="dateText" destination="Z2h-5D-FDy" id="2sL-ya-ceu"/>
+                        <outlet property="mapView" destination="Oke-kU-Orh" id="gEf-Cx-4Eo"/>
                         <outlet property="noteText" destination="l3Z-Uc-44x" id="MZ3-tZ-ycb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ds8-vE-Zvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555" y="-276"/>
+            <point key="canvasLocation" x="442" y="-305"/>
         </scene>
     </scenes>
     <resources>
@@ -737,6 +777,7 @@
                 <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
             </relationships>
         </class>
@@ -746,9 +787,9 @@
         <class className="QPSpendingDetailTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingDetailTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
             </relationships>
         </class>

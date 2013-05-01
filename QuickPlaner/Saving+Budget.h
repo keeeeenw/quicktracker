@@ -12,6 +12,9 @@
 #define SAVE_DESCRIPTION @"save_description"
 #define SAVE_DATE @"save_date"
 #define SAVE_AMOUNT @"save_amount"
+#define SAVE_LATITUDE @"save_latitude"
+#define SAVE_LONGITUDE @"save_longitude"
+
 
 @interface Saving (Budget)
 

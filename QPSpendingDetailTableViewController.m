@@ -7,9 +7,11 @@
 //
 
 #import "QPSpendingDetailTableViewController.h"
+#import <MapKit/MapKit.h>
+#import "QPMapAnnotation.h"
 
 @interface QPSpendingDetailTableViewController () <UITextViewDelegate,UITextFieldDelegate>
-
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *amountText;
 @property (weak, nonatomic) IBOutlet UITextField *dateText;
 @property (weak, nonatomic) IBOutlet UITextView *noteText;
@@ -54,6 +56,25 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+
+    //Setup MapView
+    NSNumber *latitude = self.spend.latitude;
+    NSNumber *longitude = self.spend.longitude;
+    
+    //TODO: make a new class using record for both saving and spending
+    NSDictionary *record = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [self.spend.amount stringValue],@"Amount",
+                            latitude, @"Latitude",
+                            longitude, @"Longitdue",
+                            self.spend.name, @"Note",
+                            nil];
+    
+    QPMapAnnotation *annotation = [QPMapAnnotation annotationForRecord:record];
+    [self.mapView addAnnotation:annotation];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([annotation coordinate], 1500, 1500);
+	[self.mapView setRegion:region animated:YES];
+	[self.mapView selectAnnotation:annotation animated:YES];
+    [self.mapView setNeedsDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
