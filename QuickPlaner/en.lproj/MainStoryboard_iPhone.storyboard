@@ -799,11 +799,6 @@
         <class className="QPViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
             <relationships>
-                <relationship kind="action" name="modeSwitchValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="purchaseTextField" candidateClass="UITextField"/>
