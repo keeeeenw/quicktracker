@@ -15,6 +15,7 @@
 @interface QPViewController () <UITextFieldDelegate,UIActionSheetDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyRemainedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyUpdateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *purchaseTextField; //this is also used to process saving
 //@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *quickAddButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSwitch;
@@ -264,6 +265,8 @@
               fromButton:(UIButton *)sender{
     [self startSpinner:@"Updating Spending"];
     
+    [self setMoneyUpdateLabelByAmount:purchaseAmount isSave:NO];
+    
     //To spend up the responsiveness of the UI the money label is updated using NSUserDefaults instead of CoreData
     [self updateSpendingByAmount:[purchaseAmount doubleValue]];
     
@@ -317,6 +320,9 @@
             fromButton:(UIButton *)sender {
     [self startSpinner:@"Updating Saving"];
     
+    [self setMoneyUpdateLabelByAmount:saveAmount isSave:YES];
+
+    
     //To spend up the responsiveness of the UI the money label is updated using NSUserDefaults instead of CoreData
     [self updateSavingByAmount:[saveAmount doubleValue]];
     
@@ -352,6 +358,7 @@
 }
 
 - (void) updateSavingByAmount:(double) saveAmount{
+    
     double saving =  [[[NSUserDefaults standardUserDefaults] objectForKey:SAVE] doubleValue];
     saving += saveAmount;
     
@@ -359,6 +366,23 @@
     
     double total = [self moneyValueInMoneyRemainedLabel] + saveAmount;
     self.moneyRemainedLabel.text = [[[[NSNumberFormatter alloc]init]currencySymbol] stringByAppendingFormat:@"%.2f", total];
+}
+
+- (void) setMoneyUpdateLabelByAmount:(NSString *)amount isSave:(BOOL)save{
+    self.moneyUpdateLabel.alpha = 0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.moneyUpdateLabel.alpha = 1;
+        if (save) {
+            self.moneyUpdateLabel.text = [NSString stringWithFormat:@"+%@",amount];
+        } else {
+            self.moneyUpdateLabel.text = [NSString stringWithFormat:@"-%@",amount];
+        }
+        
+        [UIView animateWithDuration:2 animations:^{
+            self.moneyUpdateLabel.alpha = 0;
+        }];
+    }];
 }
 
 - (double) moneyValueInMoneyRemainedLabel{
