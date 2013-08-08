@@ -794,7 +794,6 @@
         <class className="QPSpendingDetailTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingDetailTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
