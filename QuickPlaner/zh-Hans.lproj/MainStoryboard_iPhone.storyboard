@@ -530,14 +530,33 @@
                             </tableViewSection>
                             <tableViewSection id="lzU-te-DdO">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8au-GP-yZX">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="178" id="8au-GP-yZX">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="177"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="cUI-iY-OYe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </mapView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="fXg-Xa-yky">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GRy-wp-Eax">
+                                        <rect key="frame" x="0.0" y="470" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fom-tN-dyf">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vys-pQ-C6s">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
@@ -547,7 +566,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deletePressed:" destination="meo-8U-WB4" eventType="touchUpInside" id="I9x-Pu-Gne"/>
+                                                        <action selector="deletePressed:" destination="meo-8U-WB4" eventType="touchUpInside" id="AB5-Sp-ywC"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -566,6 +585,7 @@
                     <connections>
                         <outlet property="amountText" destination="Ivr-Bo-XwA" id="PGj-ic-WUj"/>
                         <outlet property="dateText" destination="XrA-8c-Wrt" id="hcA-gF-9rS"/>
+                        <outlet property="mapView" destination="cUI-iY-OYe" id="bge-Vf-EDU"/>
                         <outlet property="noteText" destination="3EB-xl-b3V" id="c14-hF-iAz"/>
                     </connections>
                 </tableViewController>
@@ -670,14 +690,33 @@
                             </tableViewSection>
                             <tableViewSection id="Qz0-fN-unt">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="b02-1N-Ahd">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="178" id="b02-1N-Ahd">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="177"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="eib-9u-iXQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </mapView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Hsu-hy-lQW">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ANg-9z-qFn">
+                                        <rect key="frame" x="0.0" y="470" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HcC-1b-ZjI">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z3A-oU-RYp">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -687,7 +726,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deletePressed:" destination="SrR-y0-HZA" eventType="touchUpInside" id="GkV-rj-9Z7"/>
+                                                        <action selector="deletePressed:" destination="SrR-y0-HZA" eventType="touchUpInside" id="MNq-S5-7aB"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -706,6 +745,7 @@
                     <connections>
                         <outlet property="amountText" destination="0EQ-vl-Cyw" id="bBh-ju-b5e"/>
                         <outlet property="dateText" destination="hPZ-sc-we9" id="Bt7-F1-YjM"/>
+                        <outlet property="mapView" destination="eib-9u-iXQ" id="fNn-z5-iCv"/>
                         <outlet property="noteText" destination="9tX-oj-dWr" id="0U3-TZ-eeF"/>
                     </connections>
                 </tableViewController>
@@ -719,6 +759,64 @@
         <image name="delete_button.png" width="600" height="88"/>
         <image name="enter_button" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="QPHistoryTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPHistoryTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="savingCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="spendingCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="totalCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="QPSavingDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSavingDetailTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="QPSavingTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSavingTableViewController.h"/>
+        </class>
+        <class className="QPSpendingDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingDetailTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="noteText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="QPSpendingTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingTableViewController.h"/>
+        </class>
+        <class className="QPViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="modeSwitchValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
+                <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="moneyUpdateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="purchaseTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="quickButton1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quickButton2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quickButton3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quickButton5" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quickButton6" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quickButton7" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
