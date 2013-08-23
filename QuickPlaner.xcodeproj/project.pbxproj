@@ -103,6 +103,7 @@
 		5C572A7A16913259006D1A17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5C68B279168AB04900BA661A /* QPHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPHistoryTableViewController.h; sourceTree = "<group>"; };
 		5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPHistoryTableViewController.m; sourceTree = "<group>"; };
+		5C6E1AC117C7B9D10096182D /* MBPModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MBPModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		5C799A121690133B004C6407 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		5C799A131690133B004C6407 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		5C799A16169013AB004C6407 /* QPSavingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPSavingTableViewController.h; sourceTree = "<group>"; };
@@ -713,6 +714,7 @@
 		5C39721D172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5C6E1AC117C7B9D10096182D /* MBPModel 3.xcdatamodel */,
 				5C39721E172C2C3100DD9D73 /* MBPModel 2.xcdatamodel */,
 				5C39721F172C2C3100DD9D73 /* MBPModel.xcdatamodel */,
 			);

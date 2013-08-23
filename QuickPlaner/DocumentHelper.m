@@ -20,7 +20,10 @@
     static UIManagedDocument *database = nil;
     if (!database) {
         database = [[UIManagedDocument alloc]initWithFileURL:fileURL];
-
+        database.persistentStoreOptions = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                           [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        
     }
     return database;
 }
@@ -55,7 +58,7 @@
                 NSLog(@"Opening Exisiting Database Not Succeed");
             }
         }];
-    } 
+    }
 }
 
 + (void)closeDocument:(NSString *)name
