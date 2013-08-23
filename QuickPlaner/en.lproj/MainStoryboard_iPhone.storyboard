@@ -795,6 +795,7 @@
         <class className="QPSpendingDetailTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPSpendingDetailTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="deletePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="amountText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dateText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
@@ -807,6 +808,11 @@
         <class className="QPViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
             <relationships>
+                <relationship kind="action" name="modeSwitchValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
+                <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="moneyUpdateLabel" candidateClass="UILabel"/>
