@@ -15,8 +15,6 @@
 		5C118833168A97B80016AF81 /* Spending+Budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C118829168A97B80016AF81 /* Spending+Budget.m */; };
 		5C118835168A9AC80016AF81 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C118834168A9AC80016AF81 /* CoreData.framework */; };
 		5C39721C172C256000DD9D73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39721B172C256000DD9D73 /* CoreLocation.framework */; };
-		5C397220172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C39721D172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld */; };
-		5C397221172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C39721D172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld */; };
 		5C397224172C625400DD9D73 /* Spending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C397223172C625400DD9D73 /* Spending.m */; };
 		5C397227172C625400DD9D73 /* Saving.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C397226172C625400DD9D73 /* Saving.m */; };
 		5C397229172D830400DD9D73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C397228172D830400DD9D73 /* MapKit.framework */; };
@@ -28,6 +26,7 @@
 		5C572A7D16913259006D1A17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C572A7A16913259006D1A17 /* Default@2x.png */; };
 		5C68B27B168AB04900BA661A /* QPHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */; };
 		5C68B27C168AB04900BA661A /* QPHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */; };
+		5C6E1AC517C7BB810096182D /* MBPModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E1AC217C7BB810096182D /* MBPModel.xcdatamodeld */; };
 		5C799A141690133B004C6407 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A131690133B004C6407 /* CoreDataTableViewController.m */; };
 		5C799A151690133B004C6407 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A131690133B004C6407 /* CoreDataTableViewController.m */; };
 		5C799A18169013AB004C6407 /* QPSavingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C799A17169013AB004C6407 /* QPSavingTableViewController.m */; };
@@ -87,8 +86,6 @@
 		5C118834168A9AC80016AF81 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5C377255169EA7260098FEBC /* QuickPlaner copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "QuickPlaner copy-Info.plist"; path = "/Users/zixiao/Dropbox/xcode developer/Personal Projects/QuickPlaner/QuickPlaner copy-Info.plist"; sourceTree = "<absolute>"; };
 		5C39721B172C256000DD9D73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5C39721E172C2C3100DD9D73 /* MBPModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MBPModel 2.xcdatamodel"; sourceTree = "<group>"; };
-		5C39721F172C2C3100DD9D73 /* MBPModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBPModel.xcdatamodel; sourceTree = "<group>"; };
 		5C397222172C625400DD9D73 /* Spending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spending.h; sourceTree = "<group>"; };
 		5C397223172C625400DD9D73 /* Spending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spending.m; sourceTree = "<group>"; };
 		5C397225172C625400DD9D73 /* Saving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Saving.h; sourceTree = "<group>"; };
@@ -103,7 +100,8 @@
 		5C572A7A16913259006D1A17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5C68B279168AB04900BA661A /* QPHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPHistoryTableViewController.h; sourceTree = "<group>"; };
 		5C68B27A168AB04900BA661A /* QPHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPHistoryTableViewController.m; sourceTree = "<group>"; };
-		5C6E1AC117C7B9D10096182D /* MBPModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MBPModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		5C6E1AC317C7BB810096182D /* MBPModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MBPModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		5C6E1AC417C7BB810096182D /* MBPModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBPModel.xcdatamodel; sourceTree = "<group>"; };
 		5C799A121690133B004C6407 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		5C799A131690133B004C6407 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		5C799A16169013AB004C6407 /* QPSavingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPSavingTableViewController.h; sourceTree = "<group>"; };
@@ -171,7 +169,7 @@
 		5C118820168A97A60016AF81 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5C39721D172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld */,
+				5C6E1AC217C7BB810096182D /* MBPModel.xcdatamodeld */,
 				5C397225172C625400DD9D73 /* Saving.h */,
 				5C397226172C625400DD9D73 /* Saving.m */,
 				5C397222172C625400DD9D73 /* Spending.h */,
@@ -426,10 +424,10 @@
 				5C799A1C169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
 				5CEA599016A88B2800E732D2 /* QPSavingDetailTableViewController.m in Sources */,
 				5C7BBB1D16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */,
-				5C397220172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld in Sources */,
 				5C397224172C625400DD9D73 /* Spending.m in Sources */,
 				5C397227172C625400DD9D73 /* Saving.m in Sources */,
 				5C39722C172D884E00DD9D73 /* QPMapAnnotation.m in Sources */,
+				5C6E1AC517C7BB810096182D /* MBPModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +444,6 @@
 				5C799A19169013AB004C6407 /* QPSavingTableViewController.m in Sources */,
 				5C799A1D169013CE004C6407 /* QPSpendingTableViewController.m in Sources */,
 				5C7BBB1E16B3366500A5F106 /* QPSpendingDetailTableViewController.m in Sources */,
-				5C397221172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,14 +708,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5C39721D172C2C3100DD9D73 /* MBPModel 2.xcdatamodeld */ = {
+		5C6E1AC217C7BB810096182D /* MBPModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5C6E1AC117C7B9D10096182D /* MBPModel 3.xcdatamodel */,
-				5C39721E172C2C3100DD9D73 /* MBPModel 2.xcdatamodel */,
-				5C39721F172C2C3100DD9D73 /* MBPModel.xcdatamodel */,
+				5C6E1AC317C7BB810096182D /* MBPModel 2.xcdatamodel */,
+				5C6E1AC417C7BB810096182D /* MBPModel.xcdatamodel */,
 			);
-			currentVersion = 5C39721E172C2C3100DD9D73 /* MBPModel 2.xcdatamodel */;
+			currentVersion = 5C6E1AC317C7BB810096182D /* MBPModel 2.xcdatamodel */;
+			name = MBPModel.xcdatamodeld;
 			path = "MBPModel 2.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
