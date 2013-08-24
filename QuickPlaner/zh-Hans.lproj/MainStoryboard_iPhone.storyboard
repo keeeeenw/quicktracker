@@ -20,7 +20,7 @@
                                 <rect key="frame" x="7" y="66" width="305" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="99"/>
-                                <color key="textColor" red="0.37254902720451355" green="0.46274513006210327" blue="0.61960786581039429" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
@@ -799,11 +799,6 @@
         <class className="QPViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QPViewController.h"/>
             <relationships>
-                <relationship kind="action" name="modeSwitchValueChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="purchaseEntered:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="quickAddSwiped:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="resetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeSwitch" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="moneyRemainedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="moneyUpdateLabel" candidateClass="UILabel"/>
